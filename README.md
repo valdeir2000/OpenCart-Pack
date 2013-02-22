@@ -1,12 +1,12 @@
 OpenCart-Pack
 =============
 
-* [O que È o projeto](#o-que-%C3%A9-o-projeto)
-* [InstalaÁ„o](#instala%C3%A7%C3%A3o)
+* [O que √© o projeto](#o-que-%C3%A9-o-projeto)
+* [Instala√ß√£o](#instala%C3%A7%C3%A3o)
 * [Changelog](#O que tem nesse pack)
 
-### O que È o projeto.
-Criamos esse pack para facilitar o pessoal que est· iniciando a desenvolver sua primeira loja, esse pack contÈm in˙meras extensıes, mÛdulos e modificaÁıes para os lojistas brasileiros.
+### O que √© o projeto.
+Criamos esse pack para facilitar o pessoal que est√° iniciando a desenvolver sua primeira loja, esse pack cont√©m in√∫meras extens√µes, m√≥dulos e modifica√ß√µes para os lojistas brasileiros.
 
 ### O que tem nesse pack
 Akatus
@@ -18,12 +18,12 @@ PagSeguro
 Rastreamento de Objetos
 Rich Snippet
 
-### InstalaÁ„o
+### Instala√ß√£o
 1. Extraia o arquivo moip.zip no seu computador.
 2. Copie as pastas "admin", "catalog", "image", "valdeir", "vqmod", "system" e o arquivo "retorno_moip.php" para a raiz de sua loja.
 3. Acesse [http://www.SEUDOMINIO.com.br/valdeir/moip/](javascript:void(0).
 4. Clique em Instalar
-5. FaÁa seu login com o usu·rio e senha do admin.
+5. Fa√ßa seu login com o usu√°rio e senha do admin.
 6. Preencha todos os dados
 
 ### Equipte
