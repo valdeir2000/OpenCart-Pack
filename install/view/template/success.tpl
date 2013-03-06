@@ -1,19 +1,19 @@
 <?php echo $header; ?>
-<h1>Upgrade - Complete!</h1>
+<h1>Atualização - Finalização!</h1>
 <div id="column-right">
   <ul>
-    <li>Upgrade</li>
-    <li><b>Finished</b></li>
+    <li>Atualização</li>
+    <li><b>Finalização</b></li>
   </ul>
 </div>
 <div id="content">
-  <div class="warning">Don't forget to delete your installation directory!</div>
-  <p>Congratulations! You have successfully upgraded OpenCart.</p>
+  <div class="warning">Não se esqueça de apagar o diretório de instalação!</div>
+  <p>Parabéns! Você instalou com sucesso OpenCart.</p>
   <div class="success">
     <div><a href="../"><img src="view/image/screenshot_1.png" alt="" /></a><br />
-      <a href="../">Goto your Online Shop</a> </div>
+      <a href="../">Vá para a sua Loja Online</a></div>
     <div><a href="../admin/"><img src="view/image/screenshot_2.png" alt="" /></a><br />
-      <a href="../admin/">Login to your Administration</a> </div>
+      <a href="../admin/">Entre na sua Administração</a></div>
   </div>
 </div>
 <?php echo $footer; ?>

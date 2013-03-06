@@ -14,6 +14,8 @@ define('DIR_DATABASE', DIR_SYSTEM . 'database/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/template/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
+define('DIR_ROOT', str_replace('install', '', realpath(dirname(__FILE__))));
+define('HTTP_ROOT', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/install/', '', rtrim(dirname($_SERVER['SCRIPT_NAME']), '/.\\') . '/'));
 
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
@@ -41,6 +43,10 @@ $registry->set('response', $response);
 // Document
 $document = new Document();
 $registry->set('document', $document);
+
+// Session
+$session = new Session();
+$registry->set('session', $session);
 
 // Upgrade
 $upgrade = false;

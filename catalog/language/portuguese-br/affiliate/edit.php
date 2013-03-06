@@ -32,7 +32,7 @@ $_['error_email']       = 'O e-mail não é válido!';
 $_['error_telephone']   = 'O telefone deve ter entre 3 e 32 caracteres!';
 $_['error_address_1']   = 'O endereço e o número devem ter entre 3 e 128 caracteres!';
 $_['error_city']        = 'A cidade deve ter entre 2 e 128 caracteres!';
-$_['error_postcode']    = 'O CEP deve ter no mínimo 8 caracteres!';
 $_['error_country']     = 'Por favor, selecione um país!';
 $_['error_zone']        = 'Por favor, selecione um estado!';
+$_['error_postcode']    = 'O CEP deve ter no mínimo 8 caracteres!';
 ?>

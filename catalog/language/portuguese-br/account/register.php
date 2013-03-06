@@ -28,7 +28,7 @@ $_['entry_postcode']       = 'CEP:';
 $_['entry_city']           = 'Cidade:';
 $_['entry_country']        = 'País:';
 $_['entry_zone']           = 'Estado:';
-$_['entry_newsletter']     = 'Assinar Informativo:';
+$_['entry_newsletter']     = 'Subescrever:';
 $_['entry_password']       = 'Senha:';
 $_['entry_confirm']        = 'Repetir Senha:';
 
@@ -41,7 +41,7 @@ $_['error_telephone']      = 'Atenção: O telefone deve ter entre 3 e 32 caract
 $_['error_password']       = 'Atenção: A senha deve ter entre 4 e 20 caracteres!';
 $_['error_confirm']        = 'Atenção: A senha repetida não foi confirmada!';
 $_['error_company_id']     = 'Atenção: A IE ou RG é obrigatórioCompany ID required!';
-$_['error_tax_id']         = 'Atenção: O CNPJ ou CPF é obrigatório!';
+$_['error_tax_id']         = 'CNPJ ou CPF obrigatório!';
 $_['error_vat']            = 'Atenção: O número VAT (IVA) não é válido!';
 $_['error_address_1']      = 'Atenção: O endereço e o número devem ter entre 3 e 128 caracteres!';
 $_['error_city']           = 'Atenção: A cidade deve ter entre 2 e 128 caracteres!';

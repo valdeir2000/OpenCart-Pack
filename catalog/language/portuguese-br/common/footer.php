@@ -1,9 +1,9 @@
 <?php
 // Text
 $_['text_information']  = 'Informações';
-$_['text_service']      = 'Atendimento';
+$_['text_service']      = 'Atendimento ao Cliente';
 $_['text_extra']        = 'Extras';
-$_['text_contact']      = 'Contate-nos';
+$_['text_contact']      = 'Fale Conosco';
 $_['text_return']       = 'Devoluções';
 $_['text_sitemap']      = 'Mapa da Loja';
 $_['text_manufacturer'] = 'Lista de Fabricantes';

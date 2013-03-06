@@ -1,7 +1,6 @@
 <?php
 // Text
 $_['text_title']          = 'Cartão de Crédito/Débito (Paymate)';
-
 $_['text_unable']         = 'Não foi possível localizar ou atualizar a situação do pedido';
 $_['text_declined']       = 'O pagamento foi recusado pelo Paymate';
 $_['text_failed']         = 'Falha na transação no Paymate';

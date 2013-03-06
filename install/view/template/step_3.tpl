@@ -1,11 +1,15 @@
 <?php echo $header; ?>
-<h1>Step 3 - Configuration</h1>
+<h1>Step 3 - Configuração</h1>
 <div id="column-right">
   <ul>
-    <li>License</li>
-    <li>Pre-Installation</li>
-    <li><b>Configuration</b></li>
-    <li>Finished</li>
+    <li>Licença</li>
+    <li>Pré Instalação</li>
+    <li><b>Configuração</b></li>
+    <li>Formas de Envio</li>
+    <li>Formas de Pagamento</li>
+    <li>Módulos</li>
+    <li>VQMod</li>
+    <li>Finalização</li>
   </ul>
 </div>
 <div id="content">
@@ -13,7 +17,7 @@
   <div class="warning"><?php echo $error_warning; ?></div>
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-    <p>1. Please enter your database connection details.</p>
+    <p>1. Por favor insira os seus dados de conexão de banco de dados.</p>
     <fieldset>
       <table class="form">
         <tr>
@@ -31,7 +35,7 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> User:</td>
+          <td><span class="required">*</span> Usuário:</td>
           <td><input type="text" name="db_user" value="<?php echo $db_user; ?>" />
             <br />
             <?php if ($error_db_user) { ?>
@@ -39,11 +43,11 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td>Password:</td>
+          <td>Senha:</td>
           <td><input type="text" name="db_password" value="<?php echo $db_password; ?>" /></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> Database Name:</td>
+          <td><span class="required">*</span> Banco de Dados:</td>
           <td><input type="text" name="db_name" value="<?php echo $db_name; ?>" />
             <br />
             <?php if ($error_db_name) { ?>
@@ -51,7 +55,7 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td>Database Prefix:</td>
+          <td>Prefixo:</td>
           <td><input type="text" name="db_prefix" value="<?php echo $db_prefix; ?>" />
             <br />
             <?php if ($error_db_prefix) { ?>
@@ -60,11 +64,11 @@
         </tr>
       </table>
     </fieldset>
-    <p>2. Please enter a username and password for the administration.</p>
+    <p>2. Por favor insira um nome de usuário e senha para a administração.</p>
     <fieldset>
       <table class="form">
         <tr>
-          <td><span class="required">*</span> Username:</td>
+          <td><span class="required">*</span> Usuário:</td>
           <td><input type="text" name="username" value="<?php echo $username; ?>" />
             <br />
             <?php if ($error_username) { ?>
@@ -72,7 +76,7 @@
             <?php } ?></td>
         </tr>
         <tr>
-          <td><span class="required">*</span> Password:</td>
+          <td><span class="required">*</span> Senha:</td>
           <td><input type="text" name="password" value="<?php echo $password; ?>" />
             <br />
             <?php if ($error_password) { ?>
@@ -90,7 +94,7 @@
       </table>
     </fieldset>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button">Back</a></div>
+      <div class="left"><a href="<?php echo $back; ?>" class="button">Voltar</a></div>
       <div class="right">
         <input type="submit" value="Continue" class="button" />
       </div>

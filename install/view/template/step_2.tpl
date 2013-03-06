@@ -1,11 +1,15 @@
 <?php echo $header; ?>
-<h1>Step 2 - Pre-Installation</h1>
+<h1>Step 2 - Pré Instalação</h1>
 <div id="column-right">
   <ul>
-    <li>License</li>
-    <li><b>Pre-Installation</b></li>
-    <li>Configuration</li>
-    <li>Finished</li>
+    <li>Licença</li>
+    <li><b>Pré Instalação</b></li>
+    <li>Configuração</li>
+    <li>Formas de Envio</li>
+    <li>Formas de Pagamento</li>
+    <li>Módulos</li>
+    <li>VQMod</li>
+    <li>Finalização</li>
   </ul>
 </div>
 <div id="content">
@@ -13,17 +17,17 @@
   <div class="warning"><?php echo $error_warning; ?></div>
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
-    <p>1. Please configure your PHP settings to match requirements listed below.</p>
+    <p>1. Por favor configure seu PHP para corresponder aos requisitos listados abaixo.</p>
     <fieldset>
       <table>
         <tr>
-          <th width="35%" align="left"><b>PHP Settings</b></th>
-          <th width="25%" align="left"><b>Current Settings</b></th>
-          <th width="25%" align="left"><b>Required Settings</b></th>
+          <th width="35%" align="left"><b>Configurações PHP</b></th>
+          <th width="25%" align="left"><b>Configurações Atuais</b></th>
+          <th width="25%" align="left"><b>Configurações Necessárias</b></th>
           <th width="15%" align="center"><b>Status</b></th>
         </tr>
         <tr>
-          <td>PHP Version:</td>
+          <td>Verão do PHP:</td>
           <td><?php echo phpversion(); ?></td>
           <td>5.0+</td>
           <td align="center"><?php echo (phpversion() >= '5.0') ? '<img src="view/image/good.png" alt="Good" />' : '<img src="view/image/bad.png" alt="Bad" />'; ?></td>
@@ -54,13 +58,13 @@
         </tr>
       </table>
     </fieldset>
-    <p>2. Please make sure the PHP extensions listed below are installed.</p>
+    <p>2. Por favor, certifique-se as extensões do PHP listados abaixo estão instaladas.</p>
     <fieldset>
       <table>
         <tr>
-          <th width="35%" align="left"><b>Extension</b></th>
-          <th width="25%" align="left"><b>Current Settings</b></th>
-          <th width="25%" align="left"><b>Required Settings</b></th>
+          <th width="35%" align="left"><b>Extensão</b></th>
+          <th width="25%" align="left"><b>Configurações Atuais</b></th>
+          <th width="25%" align="left"><b>Configurações Necessárias</b></th>
           <th width="15%" align="center"><b>Status</b></th>
         </tr>
         <tr>
@@ -95,42 +99,42 @@
         </tr>
       </table>
     </fieldset>
-    <p>3. Please make sure you have set the correct permissions on the files list below.</p>
+    <p>3. Por favor, certifique-se de definir as permissões corretas na lista de arquivos abaixo.</p>
     <fieldset>
       <table>
         <tr>
-          <th align="left"><b>Files</b></th>
+          <th align="left"><b>Arquivos</b></th>
           <th align="left"><b>Status</b></th>
         </tr>
         <tr>
           <td><?php echo $config_catalog; ?></td>
           <td><?php if (!file_exists($config_catalog)) { ?>
-            <span class="bad">Missing</span>
+            <span class="bad">Não Existe</span>
             <?php } elseif (!is_writable($config_catalog)) { ?>
-            <span class="bad">Unwritable</span>
+            <span class="bad">Não Gravável</span>
           <?php } else { ?>
-          <span class="good">Writable</span>
+          <span class="good">Gravável</span>
           <?php } ?>
             </td>
         </tr>
         <tr>
           <td><?php echo $config_admin; ?></td>
           <td><?php if (!file_exists($config_admin)) { ?>
-            <span class="bad">Missing</span>
+            <span class="bad">Não Existe</span>
             <?php } elseif (!is_writable($config_admin)) { ?>
-            <span class="bad">Unwritable</span>
+            <span class="bad">Não Gravável</span>
           <?php } else { ?>
-          <span class="good">Writable</span>
+          <span class="good">Gravável</span>
           <?php } ?>
              </td>
         </tr>
       </table>
     </fieldset>
-    <p>4. Please make sure you have set the correct permissions on the directories list below.</p>
+    <p>4. Por favor, certifique-se de definir as permissões corretas na lista de diretórios abaixo.</p>
     <fieldset>
       <table>
         <tr>
-          <th align="left"><b>Directories</b></th>
+          <th align="left"><b>Diretórios</b></th>
           <th align="left"><b>Status</b></th>
         </tr>
         <tr>
@@ -160,7 +164,7 @@
       </table>
     </fieldset>
     <div class="buttons">
-      <div class="left"><a href="<?php echo $back; ?>" class="button">Back</a></div>
+      <div class="left"><a href="<?php echo $back; ?>" class="button">Voltar</a></div>
       <div class="right">
         <input type="submit" value="Continue" class="button" />
       </div>

@@ -1,0 +1,1354 @@
+<?xml version="1.0"?>
+<modification>
+	<id><![CDATA[Report Print]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[2.0.3]]></vqmver>
+	<author><![CDATA[valdeir <valdeirpsr@hotmail.com.br>]]></author>
+	<!-- ####################################
+					.TPL
+	#################################### -->
+	<file name="admin/view/template/report/sale_order.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+					
+					<!-- Group By -->
+					<div id="group">
+						<strong><?php echo $entry_group ?></strong>
+					</div>
+					
+					<!-- Order Status -->
+					<div id="status">
+						<strong><?php echo $entry_status ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				$('<span>'+$('select[name="filter_group"] option:selected').text()+'</span>').appendTo('#group');
+				$('<span>'+$('select[name="filter_order_status_id"] option:selected').text()+'</span>').appendTo('#status');		
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/sale_tax.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+					
+					<!-- Group By -->
+					<div id="group">
+						<strong><?php echo $entry_group ?></strong>
+					</div>
+					
+					<!-- Order Status -->
+					<div id="status">
+						<strong><?php echo $entry_status ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				$('<span>'+$('select[name="filter_group"] option:selected').text()+'</span>').appendTo('#group');
+				$('<span>'+$('select[name="filter_order_status_id"] option:selected').text()+'</span>').appendTo('#status');		
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/sale_shipping.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+					
+					<!-- Group By -->
+					<div id="group">
+						<strong><?php echo $entry_group ?></strong>
+					</div>
+					
+					<!-- Order Status -->
+					<div id="status">
+						<strong><?php echo $entry_status ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				$('<span>'+$('select[name="filter_group"] option:selected').text()+'</span>').appendTo('#group');
+				$('<span>'+$('select[name="filter_order_status_id"] option:selected').text()+'</span>').appendTo('#status');		
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/sale_return.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+					
+					<!-- Group By -->
+					<div id="group">
+						<strong><?php echo $entry_group ?></strong>
+					</div>
+					
+					<!-- Order Status -->
+					<div id="status">
+						<strong><?php echo $entry_status ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				$('<span>'+$('select[name="filter_group"] option:selected').text()+'</span>').appendTo('#group');
+				$('<span>'+$('select[name="filter_order_status_id"] option:selected').text()+'</span>').appendTo('#status');		
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/sale_coupon.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						/* Esconde a coluna 'action' */
+						$('.list tr').each(function(){
+							$(this).find('td').last().hide();
+						});
+						
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+						
+						/* Exibe a coluna 'action' */
+						$('.list tr').each(function(){
+							$(this).find('td').last().show();
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');	
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	
+	
+	<file name="admin/view/template/report/product_viewed.tpl">
+		<operation>
+			<search position="replace"><![CDATA[
+				<div class="buttons"><a href="<?php echo $reset; ?>" class="button"><?php echo $button_reset; ?></a></div>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a href="<?php echo $reset; ?>" class="button"><?php echo $button_reset; ?></a>
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				<?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+					}
+				//--></script>
+				
+				<script type="text/javascript">
+					/* Print */
+					/* Aplica o efeito zebrado */
+					$('.list tbody tr').each(function (index){
+						if (index%2 == 0){
+							$(this).addClass('even');
+						}else{
+							$(this).addClass('odd');
+						}
+					});
+				</script>
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/product_purchased.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+					
+					<!-- Order Status -->
+					<div id="status">
+						<strong><?php echo $entry_status ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				$('<span>'+$('select[name="filter_order_status_id"] option:selected').text()+'</span>').appendTo('#status');		
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/customer_online.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--						
+					function imprimir(){
+						/* Esconde a coluna 'action' */
+						$('.list tr').each(function(){
+							$(this).find('td').last().hide();
+						});
+						
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+						
+						/* Esconde a coluna 'action' */
+						$('.list tr').each(function(){
+							$(this).find('td').last().show();
+						});
+					}
+				//--></script>
+				
+				<script type="text/javascript"><!--
+					/* Print */
+					/* Aplica o efeito zebrado */
+					$('.list tbody tr').each(function (index){
+						if (index%2 == 0){
+							$(this).addClass('even');
+						}else{
+							$(this).addClass('odd');
+						}
+					});
+				//--></script>
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/customer_order.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+					
+					<!-- Order Status -->
+					<div id="status">
+						<strong><?php echo $entry_status ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().hide();
+						});
+						
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().show();
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});				
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				$('<span>'+$('select[name="filter_order_status_id"] option:selected').text()+'</span>').appendTo('#status');		
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/customer_reward.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().hide();
+						});
+						
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().show();
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});				
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');	
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/customer_credit.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				<?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().hide();
+						});
+						
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().show();
+						});
+					}
+				//--></script>
+				
+				<script type="text/javascript"><!--
+					* Print */
+					/* Aplica o efeito zebrado */
+					$('.list tbody tr').each(function (index){
+						if (index%2 == 0){
+							$(this).addClass('even');
+						}else{
+							$(this).addClass('odd');
+						}
+					});				
+					
+					/* Armazena na div .information os dados dos campos */
+					$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+					$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');	
+					/* /Print */
+				//--></script>
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/view/template/report/affiliate_commission.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+				<h1><img src="view/image/report.png" alt="" /> <?php echo $heading_title; ?></h1>
+			]]></search>
+			<add><![CDATA[
+				<div class="buttons">
+					<a class="button" href="javascript:void(0)" onClick="imprimir();"><?php echo $print ?></a>
+				</div>
+			]]></add>
+		</operation>
+	
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="content">
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<h3><?php echo $heading_title ?></h3>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation search="after">
+			<search><![CDATA[
+				<div class="pagination"><?php echo $pagination; ?></div>
+			]]></search>
+			<add><![CDATA[
+				<!-- Information Print -->
+				<div class="information">
+					<!-- Date Start -->
+					<div id="date_start">
+						<strong><?php echo $entry_date_start ?></strong>
+					</div>
+					
+					<!-- Date End -->
+					<div id="date_end">
+						<strong><?php echo $entry_date_end ?></strong>
+					</div>
+				</div>
+				<!-- /Information Print -->
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before" offset="2"><![CDATA[
+				function filter() {
+			]]></search>
+			<add><![CDATA[
+				<script src="view/javascript/jquery.printElement.min.js"></script>
+				<script type="text/javascript"><!--
+					function imprimir(){
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().hide();
+						});
+						
+						$(".content").printElement({
+							pageTitle: 'Development: Valdeir S. <valdeirpsr@hotmail.com.br>',
+							leaveOpen:false,
+							printMode:'popup'
+						});
+						
+						$('.list tr').each(function(){
+							$(this).find('td').last().show();
+						});
+					}
+				//--></script>
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$('#date-start').datepicker({dateFormat: 'yy-mm-dd'});
+			]]></search>
+			<add><![CDATA[
+				/* Print */
+				/* Aplica o efeito zebrado */
+				$('.list tbody tr').each(function (index){
+					if (index%2 == 0){
+						$(this).addClass('even');
+					}else{
+						$(this).addClass('odd');
+					}
+				});
+				
+				/* Armazena na div .information os dados dos campos */
+				$('<span>'+$('input[name="filter_date_start"]').val()+'</span>').appendTo('#date_start');
+				$('<span>'+$('input[name="filter_date_end"]').val()+'</span>').appendTo('#date_end');
+				/* /Print */
+			]]></add>
+		</operation>
+	</file>
+	
+	<!-- ####################################
+					LANGUAGE ENGLISH
+	#################################### -->
+	<file name="admin/language/english/report/sale_order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/sale_tax.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/sale_shipping.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/sale_return.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/sale_coupon.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/product_viewed.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/product_purchased.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/customer_online.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/customer_order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/customer_reward.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/customer_credit.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/language/english/report/affiliate_commission.php">
+		<operation>
+			<search position="after"><![CDATA[
+				// Entry
+			]]></search>
+			<add><![CDATA[
+				$_['print'] = 'Print';
+			]]></add>
+		</operation>
+	</file>
+	
+	<!-- ####################################
+							CONTROLLER
+	#################################### -->
+	<file name="admin/controller/report/sale_order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/sale_order');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/sale_tax.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/sale_tax');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/sale_shipping.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/sale_shipping');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/sale_return.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/sale_return');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/sale_coupon.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/sale_coupon');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/product_viewed.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/product_viewed');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/product_purchased.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/product_purchased');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/customer_online.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/customer_online');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/customer_order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/customer_order');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/customer_reward.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/customer_reward');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/customer_credit.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/customer_credit');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+	
+	<file name="admin/controller/report/affiliate_commission.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('report/affiliate_commission');
+			]]></search>
+			<add><![CDATA[
+				$this->data['print'] = $this->language->get('print');
+			]]></add>
+		</operation>
+	</file>
+</modification>

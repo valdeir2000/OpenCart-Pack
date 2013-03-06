@@ -1,0 +1,31 @@
+.shortcuts {
+	text-align:center;
+}
+.shortcuts ul {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+.shortcuts li {
+	float:left;
+	width: 100px;
+	height: 100px;
+	border:1px solid #ccc;
+	margin: 0 7px 7px 0;
+}
+.shortcuts li a {
+	text-decoration: none;
+}
+.shortcuts li:hover {
+	border:1px solid #aaa;
+	background: #ddd;
+}
+.shortcuts li img {
+	padding: 8px 18px 2px 18px;
+}
+.shortcuts li h6 {
+	color: #333;
+	font-size:12px;
+	margin:0;
+	padding:0;
+}

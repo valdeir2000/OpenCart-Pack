@@ -17,6 +17,5 @@ $_['column_name']   = 'Produto';
 $_['column_model']  = 'Modelo';
 $_['column_stock']  = 'Estoque';
 $_['column_price']  = 'Preço Unitário';
-$_['column_cart']   = 'Comprar';
 $_['column_action'] = 'Ação';
 ?>

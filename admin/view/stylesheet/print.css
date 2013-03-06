@@ -1,0 +1,94 @@
+@media screen{
+	.information{
+		display:none
+	}
+}
+
+@media print{
+	* {
+		font-family:arial;
+	}
+	.information{
+		border-top:1px solid #CCC;
+		display:block;
+		margin-bottom:10px;
+		width:100%;
+	}
+	.information div{
+		font-size:60%;
+		float:left;
+		width:25%;
+	}
+	.form, .pagination {
+		display:none;
+	}
+	.list {
+		border-collapse: collapse;
+		width: 100%;
+		border-top: 1px solid #DDDDDD;
+		border-left: 1px solid #DDDDDD;
+		margin-bottom: 20px;
+	}
+	.list td {
+		border-right: 1px solid #DDDDDD;
+		border-bottom: 1px solid #DDDDDD;
+	}
+	.list thead td {
+		background: #000000;
+		padding: 0px 5px;
+		-webkit-print-color-adjust:exact;
+	}
+	.list thead td a, .list thead td {
+		text-decoration: none;
+		color: #FFFFFF;
+		font-weight: bold;
+	}
+	.list tbody tr.even td {
+		background: #F2F2EE;
+		padding:7px;
+		-webkit-print-color-adjust:exact;
+	}
+	.list tbody tr.odd td {
+		background: #FCFBFB;
+		padding:7px;
+		-webkit-print-color-adjust:exact;
+	}
+	.list tbody td a {
+		text-decoration: underline;
+	}
+	.list tbody td {
+		vertical-align: middle;
+		padding: 0px 5px;
+		background-color: #FFFFFF;
+		-webkit-print-color-adjust:exact;
+	}
+	.list tbody tr:hover td {
+		background-color: #FFFFCB;
+		-webkit-print-color-adjust:exact;
+	}
+	.list .left {
+		text-align: left;
+		padding: 7px;
+	}
+	.list .right {
+		text-align: right;
+		padding: 7px;
+	}
+	.list .center {
+		text-align: center;
+		padding: 7px;
+	}
+	.list .asc {
+		padding-right: 15px;
+		background: url('../image/asc.png') right center no-repeat;
+		-webkit-print-color-adjust:exact;
+	}
+	.list .desc {
+		padding-right: 15px;
+		background: url('../image/desc.png') right center no-repeat;
+		-webkit-print-color-adjust:exact;
+	}
+	.list tr.filter td, .list tr:hover.filter td {
+		display:none;
+	}
+}

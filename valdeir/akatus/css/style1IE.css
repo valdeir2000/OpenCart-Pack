@@ -1,0 +1,14 @@
+.sp-arrow {
+	display: none;
+}
+.sp-side{
+	z-index:1000;
+}
+.sp-content h1{
+	display: none;
+}
+.sp-content h1.sp-title{
+	background: transparent;
+	display: block;
+	left:0px;
+}

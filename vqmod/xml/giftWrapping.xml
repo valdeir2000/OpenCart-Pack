@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<modification>
+	<id><![CDATA[Gift Wrapping]]></id>
+	<version><![CDATA[1.0]]></version>
+	<vqmver><![CDATA[1.1.6]]></vqmver>
+	<author><![CDATA[valdeir <valdeirpsr@hotmail.com>]]></author>
+	<file name="catalog/view/theme/*/template/checkout/cart.tpl">
+		<operation>
+			<search position="before" offset="3"><![CDATA[
+				<div class="cart-module">
+			]]></search>
+			<add><![CDATA[
+				<!-- Gift Wrapping -->
+			    <?php if ($giftWrapping_status) { ?>
+			    	<tr class="highlight">
+			        	<td><?php if ($next == 'giftWrapping') { ?>
+			          	<input type="radio" name="next" value="giftWrapping" id="gift" checked="checked" />
+			          	<?php } else { ?>
+			          	<input type="radio" name="next" value="giftWrapping" id="gift" />
+			          	<?php } ?></td>
+			        	<td><label for="gift"><?php echo $text_giftWrapping ?></label></td>
+			      	</tr>
+			    <?php } ?>
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[
+				<div class="cart-module">
+			]]></search>
+			<add><![CDATA[
+				<div id="giftWrapping" class="content" style="display: <?php echo ($next == 'giftWrapping' ? 'block' : 'none'); ?>;">
+			      <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+			        <input type="submit" value="<?php echo $button_addGiftWrapping ?>" name="giftWrapping" class="button" />
+			        <input type="submit" value="<?php echo $button_removeGiftWrapping ?>" name="removeGiftWrapping" class="button" />
+			      </form>
+			    </div>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/checkout/cart.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->language->load('checkout/cart');
+			]]></search>
+			<add><![CDATA[
+				$this->language->load('total/gift');
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				unset($this->session->data['reward']);
+			]]></search>
+			<add><![CDATA[
+				unset($this->session->data['giftWrapping']);
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before"><![CDATA[
+				$this->document->setTitle($this->language->get('heading_title'));
+			]]></search>
+			<add><![CDATA[
+				if ($this->config->get('gift_status') && ($this->cart->countProducts() <= $this->config->get('gift_maxProduct') || !$this->config->get('gift_maxProduct'))){
+					$this->data['giftWrapping_status'] = $this->config->get('gift_status');
+				}else{
+					$this->data['giftWrapping_status'] = 0;
+				}
+
+				// Add Gift Wrapping
+				if (isset($this->request->post['giftWrapping'])){
+					$this->session->data['giftWrapping'] = $this->request->post['giftWrapping'];
+
+					$this->session->data['success'] = $this->language->get('text_addGiftWrapping');
+
+					$this->redirect($this->url->link('checkout/cart'));
+				}
+
+				// Remove Gift Wrapping
+				if (isset($this->request->post['removeGiftWrapping'])){
+					unset($this->session->data['giftWrapping']);
+
+					$this->session->data['success'] = $this->language->get('text_removeGiftWrapping');
+
+					$this->redirect($this->url->link('checkout/cart'));
+
+				}
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="after"><![CDATA[
+				$this->data['button_checkout'] = $this->language->get('button_checkout');
+			]]></search>
+			<add><![CDATA[
+				$this->data['text_giftWrapping'] = $this->language->get('text_giftWrapping');
+				$this->data['button_addGiftWrapping'] = $this->language->get('button_addGiftWrapping');
+      			$this->data['button_removeGiftWrapping'] = $this->language->get('button_removeGiftWrapping');
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="before"><![CDATA[
+				$this->data['coupon_status'] = $this->config->get('coupon_status');
+			]]></search>
+			<add><![CDATA[
+				// Gift Wrapping
+				if ($this->config->get('gift_status') && ($this->cart->countProducts() <= $this->config->get('gift_maxProduct') || !$this->config->get('gift_maxProduct'))){
+					$this->data['giftWrapping_status'] = $this->config->get('gift_status');
+				}else{
+					$this->data['giftWrapping_status'] = 0;
+				}
+
+				if (isset($this->request->post['giftWrapping'])){
+					$this->data['giftWrapping'] = $this->request->post['giftWrapping'];
+				}elseif (isset($this->session->data['giftWrapping'])){
+					$this->data['giftWrapping'] = $this->session->data['giftWrapping'];
+				}else{
+					$this->data['giftWrapping'] = '';
+				}
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/model/checkout/order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$order_info = $this->getOrder($order_id);
+			]]></search>
+			<add><![CDATA[
+				unset($this->session->data['giftWrapping']);
+			]]></add>
+		</operation>
+	</file>
+</modification>

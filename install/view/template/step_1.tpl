@@ -1,11 +1,15 @@
 <?php echo $header; ?>
-<h1>Step 1 - License</h1>
+<h1>Step 1 - Licença</h1>
 <div id="column-right">
   <ul>
-    <li><b>License</b></li>
-    <li>Pre-Installation</li>
-    <li>Configuration</li>
-    <li>Finished</li>
+    <li><b>Licença</b></li>
+    <li>Pré Instalação</li>
+    <li>Configuração</li>
+    <li>Formas de Envio</li>
+    <li>Formas de Pagamento</li>
+    <li>Módulos</li>
+    <li>VQMod</li>
+    <li>Finalização</li>
   </ul>
 </div>
 <div id="content">
@@ -71,7 +75,7 @@
         patents cannot be used to render the program non-free.</p>
       <p>The precise terms and conditions for copying, distribution and
         modification follow.</p>
-      <h3><a name="terms"></a>TERMS AND CONDITIONS</h3>
+      <h3><a name="terms"></a>Termos e Condições</h3>
       <h4><a name="section0"></a>0. Definitions.</h4>
       <p>&ldquo;This License&rdquo; refers to version 3 of the GNU General Public License.</p>
       <p>&ldquo;Copyright&rdquo; also means copyright-like laws that apply to other kinds of
@@ -580,7 +584,7 @@
         &lt;http://www.gnu.org/philosophy/why-not-lgpl.html&gt;.</p>
     </div>
     <div class="buttons">
-      <div class="right">I agree to the license
+      <div class="right">Eu aceito a licença
         <input type="checkbox" name="agree" />&nbsp;
         <input type="submit" value="Continue" class="button" />
       </div>

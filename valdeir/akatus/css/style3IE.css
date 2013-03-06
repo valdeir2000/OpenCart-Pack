@@ -1,0 +1,13 @@
+.sp-left span.sp-mid {
+	position: absolute;
+	top:0px;
+	left:150px;
+}
+.sp-right span.sp-mid {
+	position: absolute;
+	top:0px;
+	left:0px;
+}
+.sp-right span.sp-mid i{
+	display: none;
+}

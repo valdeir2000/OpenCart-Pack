@@ -1445,7 +1445,8 @@ INSERT INTO `oc_extension` (`extension_id`, `type`, `code`) VALUES
 (398, 'total', 'voucher'),
 (407, 'payment', 'free_checkout'),
 (427, 'module', 'featured'),
-(419, 'module', 'slideshow');
+(419, 'module', 'slideshow'),
+(428, 'module', 'vqmod_manager');
 
 -- --------------------------------------------------------
 
@@ -7448,3 +7449,15 @@ CREATE TABLE `oc_zone_to_geo_zone` (
 --
 -- Dumping data for table `oc_zone_to_geo_zone`
 --
+
+
+DROP TABLE IF EXISTS `letmeknow`;
+CREATE TABLE IF NOT EXISTS `letmeknow` (
+  `letmeknow_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL COMMENT 'Customer Name',
+  `email` varchar(200) NOT NULL COMMENT 'Customer Email',
+  `product_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL DEFAULT '1',
+  `date_added` datetime NOT NULL,
+  PRIMARY KEY (`letmeknow_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

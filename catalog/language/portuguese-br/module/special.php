@@ -3,5 +3,5 @@
 $_['heading_title'] = 'Ofertas Especiais';
 
 // Text
-$_['text_reviews']  = 'Baseado em %s comentários.'; 
+$_['text_reviews']  = 'Baseado em %s comentÃ¡rios.'; 
 ?>

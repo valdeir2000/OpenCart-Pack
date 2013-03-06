@@ -49,6 +49,6 @@ class ModelInstall extends Model {
 			
 			$db->query("UPDATE `" . $data['db_prefix'] . "product` SET `viewed` = '0'");
 		}		
-	}	
+	}
 }
 ?>

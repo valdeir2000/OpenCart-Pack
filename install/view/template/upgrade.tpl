@@ -1,9 +1,9 @@
 <?php echo $header; ?>
-<h1>Upgrade</h1>
+<h1>Atualização</h1>
 <div id="column-right">
   <ul>
-    <li><b>Upgrade</b></li>
-    <li>Finished</li>
+    <li><b>Atualização</b></li>
+    <li>Finalização</li>
   </ul>
 </div>
 <div id="content">
@@ -12,14 +12,14 @@
   <?php } ?>
   <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
     <fieldset>
-    <p><b>Follow these steps carefully!</b></p>
+    <p><b>Siga estes passos com cuidado!</b></p>
     <ol>
-      <li>Post any upgrade script errors problems in the forums</li>
-      <li>After upgrade, clear any cookies in your browser to avoid getting token errors.</li>
-      <li>Load the admin page & press Ctrl+F5 twice to force the browser to update the css changes.</li>
-      <li>Goto Admin -> Users -> User Groups and Edit the Top Adminstrator group. Check All boxes.</li>
-      <li>Goto Admin and Edit the main System Settings. Update all fields and click save, even if nothing changed.</li>
-      <li>Load the store front & press Ctrl+F5 twice to force the browser to update the css changes.</li>
+      <li>Publicar quaisquer erros de script de atualização problemas no fórum</li>
+      <li>Após a atualização, limpar os cookies de seu navegador para evitar erros de token.</li>
+      <li>Carregue a página de administração e pressione Ctrl + F5 duas vezes para forçar o navegador para atualizar as alterações de css.</li>
+      <li>Vá para área de Administração -> Usuários -> Grupos de Usuários e Editar o grupo Top Adminstrator. Marque todos checkbox.</li>
+      <li>Vá para área de Administração e Editar as configurações do Sistema. Atualize todos os campos e clique em salvar, mesmo que nada mudou.</li>
+      <li>Carregue a frente de loja e pressione Ctrl + F5 duas vezes para forçar o navegador para atualizar as alterações de css.</li>
     </ol>
     </fieldset>
     <div class="buttons">

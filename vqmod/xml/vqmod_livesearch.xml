@@ -1,0 +1,131 @@
+<modification>
+	<id>Very simple AJAX live search</id>
+	<version>2.0.0</version>
+	<vqmver>2.3.0</vqmver>
+	<author>n[oO]ne</author>
+
+	<file name="catalog/view/theme/*/template/common/footer.tpl">
+		<operation>
+			<search position="before">
+				<![CDATA[</body>]]>
+			</search>
+			<add>
+				<![CDATA[<script type="text/javascript" src="catalog/view/javascript/livesearch.js"></script>]]>
+			</add>
+		</operation>
+	</file>
+	
+	<file name="catalog/view/theme/*/template/common/header.tpl">
+		<operation>
+			<search position="after" offset="2">
+				<![CDATA[<div class="button-search"></div>]]>
+			</search>
+			<add>
+				<![CDATA[
+					<link rel="stylesheet" type="text/css" href="catalog/view/theme/default/stylesheet/livesearch.css" />
+					
+					<script type="text/javascript"><!--
+						$.widget('custom.catcomplete', $.ui.autocomplete, {
+							_renderMenu: function(ul, items) {
+								var self = this, currentCategory = '';
+								
+								$.each(items, function(index, item) {
+									if (item.category != currentCategory) {
+										ul.append('<li class="ui-autocomplete-category">' + item.category + '</li>');
+										
+										currentCategory = item.category;
+									}
+									
+									self._renderItem(ul, item);
+								});
+							}
+						});
+
+						// Search
+						$('input[name=\'search\']').autocomplete({
+							delay: 500,
+							source: function(request, response) {
+								$.ajax({
+									url: 'index.php?route=product/search/ajax&keyword=' +  encodeURIComponent(request.term),
+									dataType: 'json',
+									success: function(json) {		
+										response($.map(json, function(item) {
+											return {
+												label: item.name,
+												value: item.href
+											}
+										}));
+										$('.ui-autocomplete').css('z-index', 9999);;
+									}
+								});
+							}, 
+							select: function(event, ui) {
+								$('input[name=\'search\']').val(ui.item.label);
+								location = ui.item.value + '&search=' + encodeURIComponent(ui.item.label);
+								
+								return false;
+							},
+							focus: function(event, ui) {
+							  return false;
+						   }
+						});
+				//--></script>
+				]]>
+			</add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/product/search.php">
+		<operation>
+			<search position="bottom" offset="2">
+				<![CDATA[]]>
+			</search>
+			<add>
+				<![CDATA[
+				public function ajax()
+				{
+					// Contains results
+					$data = array();
+					if( isset($this->request->get['keyword']) ) {
+						// Parse all keywords to lowercase
+						$keywords = strtolower( $this->request->get['keyword'] );
+						// Perform search only if we have some keywords
+						if( strlen($keywords) >= 3 ) {
+							$parts = explode( ' ', $keywords );
+							$add = '';
+							// Generating search
+							foreach( $parts as $part ) {
+								$add .= ' AND (LOWER(pd.name) LIKE "%' . $this->db->escape($part) . '%"';
+								$add .= ' OR LOWER(p.model) LIKE "%' . $this->db->escape($part) . '%")';
+							}
+							$add = substr( $add, 4 );
+							$sql  = 'SELECT pd.product_id, pd.name, p.model FROM ' . DB_PREFIX . 'product_description AS pd ';
+							$sql .= 'LEFT JOIN ' . DB_PREFIX . 'product AS p ON p.product_id = pd.product_id ';
+							$sql .= 'LEFT JOIN ' . DB_PREFIX . 'product_to_store AS p2s ON p2s.product_id = pd.product_id ';
+							$sql .= 'WHERE ' . $add . ' AND p.status = 1 ';
+							$sql .= 'AND pd.language_id = ' . (int)$this->config->get('config_language_id');
+							$sql .= ' AND p2s.store_id =  ' . (int)$this->config->get('config_store_id'); 
+							$sql .= ' ORDER BY p.sort_order ASC, LOWER(pd.name) ASC, LOWER(p.model) ASC';
+							$sql .= ' LIMIT 15';
+							$res = $this->db->query( $sql );
+							if( $res ) {
+								$data = ( isset($res->rows) ) ? $res->rows : $res->row;
+				
+								// For the seo url stuff
+								$basehref = 'product/product&keyword=' . $this->request->get['keyword'] . '&product_id=';
+								foreach( $data as $key => $values ) {
+									$data[$key] = array(
+										'name' => htmlspecialchars_decode($values['name'] . ' (' . $values['model'] . ')', ENT_QUOTES),
+										'href' => $this->url->link($basehref . $values['product_id'])
+									);
+								}
+							}
+						}
+					}
+					echo json_encode( $data );
+				}
+				]]>
+			</add>
+		</operation>
+	</file>
+</modification>

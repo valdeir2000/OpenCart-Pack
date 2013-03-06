@@ -1,13 +1,13 @@
 <?php
 // Text
-$_['text_refine']       = 'Subdepartamentos';
+$_['text_refine']       = 'Pesquisa avançada';
 $_['text_product']      = 'Produtos';
 $_['text_error']        = 'Departamento não encontrado!';
 $_['text_empty']        = 'Não há produtos para este departamento.';
 $_['text_quantity']     = 'Qtd:';
 $_['text_manufacturer'] = 'Fabricante:';
 $_['text_model']        = 'Código do Produto:'; 
-$_['text_points']       = 'Pontos pela Compra:';  
+$_['text_points']       = 'Pontos pela Compra:'; 
 $_['text_price']        = 'Preço:'; 
 $_['text_tax']          = 'Sem Impostos:'; 
 $_['text_reviews']      = 'Baseado em %s comentários.'; 
@@ -25,5 +25,5 @@ $_['text_rating_asc']   = 'Avaliação (Baixa)';
 $_['text_rating_desc']  = 'Avaliação (Alta)';
 $_['text_model_asc']    = 'Modelo (A - Z)';
 $_['text_model_desc']   = 'Modelo (Z - A)';
-$_['text_limit']        = 'Exibir até:';
+$_['text_limit']        = 'Mostrar';
 ?>

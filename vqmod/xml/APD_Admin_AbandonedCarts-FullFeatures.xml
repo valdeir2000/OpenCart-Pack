@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+
+	<id>Add Abandond Cart Count to Dashboard</id>
+	<version>1.2.0</version>
+	<vqmver>2.1.5</vqmver>
+	<author>Adam Dudley - http://www.vinyldye.co.uk</author>
+	
+	<!-- 
+	
+	DESCRIPTION:
+		Places a row on the dashboard with a count of PEOPLE (email addresses) who abandoned carts
+		Adds a VIEW link, which shows all the carts abandoned, (there may be more carts than people
+		because one person can create and abandon multiple carts
+	
+	VERSION HISTORY:
+		1.0.0 - Initial Release - Shows abandoned carts on dashboard
+		1.1.0 - Adds a 'view' link on dashboard and navigates to the abandoned carts	 
+		1.1.1 - Bug Fix - Fixes 404 file not found error. Now uses the correct HTTP_SERVER variable to get access to where the admin files are stored 
+		1.2.0 - Correction SQL; Correction HTTP_SERVER variable
+	-->
+	<file name="admin/view/template/common/home.tpl">
+		<operation>
+			<search position="after"><![CDATA[
+			<table>
+			]]></search>
+			<add><![CDATA[
+           <tr>
+              <td>Carrinhos abandonados nos últimos 30 dias (<a href="<?php echo HTTP_SERVER ?>index.php?route=sale/order&token=<?php echo $this->session->data['token'] ?>&filter_order_status_id=0&filter_order_id=<?php echo $abandoned_order_ids; ?>">view</a>)</td>
+              <td><?php echo $total_abandoned_orders; ?></td>
+            </tr>
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/controller/common/home.php">
+		<operation>
+			<search position="after"><![CDATA[
+			$this->data['total_order'] = $this->model_sale_order->getTotalOrders();
+			]]></search>
+			<add><![CDATA[
+			// Assigne our abandoned order count
+			$this->data['total_abandoned_orders'] = $this->model_sale_order->getAbandonedOrderCount();
+			//Get a comma separated list of the abandoned order ids
+			$this->data['abandoned_order_ids'] = $this->model_sale_order->getAbandonedOrderIds();
+			]]></add>
+		</operation>
+	</file>
+	<file name="admin/model/sale/order.php">
+		<operation>
+			<search position="before"><![CDATA[
+			public function getTotalOrders($data = array()) {
+			]]></search>
+			<add><![CDATA[
+			//Gets a count of abandoned orders, by unique email address
+	public function getAbandonedOrderCount() {
+		$sql = "SELECT COUNT( Distinct `email`) as total FROM `" . DB_PREFIX . "order` 
+				where `order_status_id` = 0
+				and `date_added` > DATE_SUB(CURDATE(),INTERVAL 31 DAY)";
+				
+		$query = $this->db->query($sql);
+
+		return $query->row['total'];
+	}
+
+	//Gets the comma separated Ids of all the carts abandoned, that have not had an order in the last 31 days by the same email address
+	public function getAbandonedOrderIds() {
+		$sql = "SELECT GROUP_CONCAT(CAST(`order_id` AS CHAR)) as order_ids FROM `" . DB_PREFIX . "order` 
+				where `order_status_id` = 0
+				AND `email` NOT IN (
+				SELECT `email` FROM `" . DB_PREFIX . "order` 
+				where `order_status_id` > 0 and `date_added` > DATE_SUB(CURDATE(),INTERVAL 31 DAY)
+				)";
+				
+		$query = $this->db->query($sql);
+
+		return $query->row['order_ids'];
+	}
+			]]></add>
+		</operation>
+		
+		<operation>
+			<search position="replace"><![CDATA[
+			$sql .= " AND o.order_id = '" . (int)$data['filter_order_id'] . "'";
+			]]></search>
+			<add><![CDATA[
+			//Allow multiple order ids to filter the list, comma separated
+			$sql .= " AND o.order_id IN (" . $data['filter_order_id'] . ")";
+			]]></add>
+		</operation>
+	</file>	
+	</modification>

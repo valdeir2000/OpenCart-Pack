@@ -1,21 +1,34 @@
 <?php echo $header; ?>
-<h1>Step 4 - Finished!</h1>
+<h1>Step 4 - Formas de Envio!</h1>
 <div id="column-right">
   <ul>
-    <li>License</li>
-    <li>Pre-Installation</li>
-    <li>Configuration</li>
-    <li><b>Finished</b></li>
+    <li>Licença</li>
+    <li>Pré Instalação</li>
+    <li>Configuração</li>
+    <li><b>Formas de Envio</b></li>
+    <li>Formas de Pagamento</li>
+    <li>Módulos</li>
+    <li>VQMod</li>
+    <li>Finalização</li>
   </ul>
 </div>
 <div id="content">
-  <div class="warning">Don't forget to delete your installation directory!</div>
-  <p>Congratulations! You have successfully installed OpenCart.</p>
-  <div class="success">
-    <div><a href="../"><img src="view/image/screenshot_1.png" alt="" /></a><br />
-      <a href="../">Go to your Online Shop</a></div>
-    <div><a href="../admin/"><img src="view/image/screenshot_2.png" alt="" /></a><br />
-      <a href="../admin/">Login to your Administration</a></div>
-  </div>
+
+	<form name="shipping" action="index.php?route=step_4" method="post">
+		<table>
+			<?php foreach ($extensions as $extension): ?>
+			<tr>
+				<td><input type="checkbox" name="shipping[]" value="<?php echo $extension['extension'] ?>" /></td>
+				<td><label><?php echo $extension['name'] ?></label></td>
+			</tr>
+			<?php endforeach; ?>
+		</table>
+		<br/>
+		<div class="buttons">
+			<a href="<?php echo $back; ?>" class="button left">Voltar</a>
+			<input type="submit" class="button right" value="Continuar" />
+		</div>
+	</form>
+  
 </div>
 <?php echo $footer; ?>

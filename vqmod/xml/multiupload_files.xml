@@ -1,0 +1,427 @@
+<modification>
+       <id>Multiupload files with filemanager</id>
+       <version>1.0.0</version>
+       <vqmver>1.2.0</vqmver>
+       <author>Chumachkin Mihail Aleksandrovich chumachkin.m@gmail.com</author>
+       <file name="/admin/controller/common/filemanager.php">
+           <operation error="skip">
+               <search position="after"><![CDATA[
+        $this->data['entry_rename'] = $this->language->get('entry_rename');
+               ]]></search>
+               <add trim="false"><![CDATA[
+        $this->data['button_addimage'] = $this->language->get('button_addimage');
+               ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="before"><![CDATA[
+        public function directory() {   
+               ]]></search>
+               <add trim="false"><![CDATA[
+    public function image_ext() {
+        $this->load->language('common/filemanager');
+        $this->load->model('tool/image');
+        $json=array();
+
+        if (isset($this->request->get['image'])) {
+            $json['text'] = $this->model_tool_image->resize(html_entity_decode($this->request->get['image'], ENT_QUOTES, 'UTF-8'), 100, 100);
+            $json['image'] = $this->request->get['image'];
+            $json['success'] = $this->language->get('image_success_added');
+        }
+
+        $this->response->setOutput(json_encode($json));
+    }
+               ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="replace" offset="71"><![CDATA[
+    public function upload() {
+               ]]></search>
+               <add trim="false"><![CDATA[
+    public function upload() {
+        $this->load->language('common/filemanager');
+        
+        $json = array();
+
+        if (isset($this->request->post['directory'])) {
+            if (isset($this->request->files['image']) && $this->request->files['image']['tmp_name']) {
+
+            // ZZZ
+            for ( $idx = 0; $idx < count($this->request->files['image']['name']); $idx++ ) {
+
+                $filename = basename(html_entity_decode($this->request->files['image']['name'][$idx], ENT_QUOTES, 'UTF-8'));
+                
+                if ((strlen($filename) < 3) || (strlen($filename) > 255)) {
+                    $json['error'] = $this->language->get('error_filename');
+                }
+                    
+                $directory = rtrim(DIR_IMAGE . 'data/' . str_replace('../', '', $this->request->post['directory']), '/');
+                
+                if (!is_dir($directory)) {
+                    $json['error'] = $this->language->get('error_directory');
+                }
+                
+                if ($this->request->files['image']['size'][$idx] > 300000) {
+                    $json['error'] = $this->language->get('error_file_size');
+                }
+                
+                $allowed = array(
+                    'image/jpeg',
+                    'image/pjpeg',
+                    'image/png',
+                    'image/x-png',
+                    'image/gif',
+                    'application/x-shockwave-flash'
+                );
+                        
+                if (!in_array($this->request->files['image']['type'][$idx], $allowed)) {
+                    $json['error'] = $this->language->get('error_file_type');
+                }
+                
+                $allowed = array(
+                    '.jpg',
+                    '.jpeg',
+                    '.gif',
+                    '.png',
+                    '.flv'
+                );
+                        
+                if (!in_array(strtolower(strrchr($filename, '.')), $allowed)) {
+                    $json['error'] = $this->language->get('error_file_type');
+                }
+
+                if ($this->request->files['image']['error'][$idx] != UPLOAD_ERR_OK) {
+                    $json['error'] = 'error_upload_' . $this->request->files['image']['error'][$idx];
+                }
+            
+                if (!isset($json['error'])) {   
+                    // ZZZ
+                    $new_filename =  $directory . '/' . $filename;
+                    if (@move_uploaded_file( $this->request->files['image']['tmp_name'][$idx], $new_filename)) {        
+                        $json['success'] = $this->language->get('text_uploaded');
+                        $json['image'][] = rtrim('data/' . str_replace('../', '', $this->request->post['directory']), '/') . '/' . $filename;
+                    } else {
+                        $json['error'] = $this->language->get('error_uploaded');
+                    }
+                }
+
+            }//foreach
+
+            } else {
+                $json['error'] = $this->language->get('error_file');
+            }
+
+
+        } else {
+            $json['error'] = $this->language->get('error_directory');
+        }
+        
+        if (!$this->user->hasPermission('modify', 'common/filemanager')) {
+            $json['error'] = $this->language->get('error_permission');  
+        }
+        
+        
+        $this->response->setOutput(json_encode($json));
+    }
+               ]]></add>
+           </operation>
+       </file>
+       <file name="/admin/view/template/catalog/product_form.tpl">
+           <operation error="skip">
+               <search position="replace"><![CDATA[
+                width: 800,
+               ]]></search>
+               <add trim="false"><![CDATA[
+                width: 1000,
+               ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="after" offset="2"><![CDATA[
+                $('#images tfoot').before(html);
+               ]]></search>
+               <add trim="false"><![CDATA[
+                return  image_row-1;
+               ]]></add>
+           </operation>
+       </file>
+       <file name="/admin/language/english/common/filemanager.php">
+           <operation error="skip">
+               <search position="after" offset="1"><![CDATA[
+                $_['text_rename']               
+                ]]></search>
+               <add trim="false"><![CDATA[
+               $_['image_success_added'] = 'Success: Image added to Image Tab';
+               $_['button_addimage']  = 'ImageTab+';
+               ]]></add>
+           </operation>
+       </file>
+       <file name="/admin/language/portuguese-br/common/filemanager.php">
+           <operation error="skip">
+               <search position="after" offset="1"><![CDATA[
+                $_['text_rename']               
+                ]]></search>
+               <add trim="false"><![CDATA[
+                $_['image_success_added'] = 'Adicionado';
+                $_['button_addimage']  = 'Adicionar Imagem';
+               ]]></add>
+           </operation>
+       </file>
+       <file name="/admin/view/template/common/filemanager.tpl">
+           <operation error="error">
+               <search position="replace" ><![CDATA[
+               <script type="text/javascript" src="view/javascript/jquery/ajaxupload.js"></script>
+               ]]>
+               </search>
+               <add trim="false"><![CDATA[
+                <script type="text/javascript" src="view/javascript/jquery/mf_ajaxupload.js"></script>
+               ]]>
+               </add>
+           </operation>
+           <operation error="skip">
+               <search position="replace" ><![CDATA[
+                <div id="menu"><a id="create" class="button" style="background-image: url('view/image/filemanager/folder.png');"><?php echo $button_folder; ?></a><a id="delete" class="button" style="background-image: url('view/image/filemanager/edit-delete.png');"><?php echo $button_delete; ?></a><a id="move" class="button" style="background-image: url('view/image/filemanager/edit-cut.png');"><?php echo $button_move; ?></a><a id="copy" class="button" style="background-image: url('view/image/filemanager/edit-copy.png');"><?php echo $button_copy; ?></a><a id="rename" class="button" style="background-image: url('view/image/filemanager/edit-rename.png');"><?php echo $button_rename; ?></a><a id="upload" class="button" style="background-image: url('view/image/filemanager/upload.png');"><?php echo $button_upload; ?></a><a id="refresh" class="button" style="background-image: url('view/image/filemanager/refresh.png');"><?php echo $button_refresh; ?></a></div>
+               ]]>
+               </search>
+               <add trim="false">
+               <![CDATA[<div id="menu"><a id="create" class="button" style="background-image: url('view/image/filemanager/folder.png');"><?php echo $button_folder; ?></a><a id="delete" class="button" style="background-image: url('view/image/filemanager/edit-delete.png');"><?php echo $button_delete; ?></a><a id="move" class="button" style="background-image: url('view/image/filemanager/edit-cut.png');"><?php echo $button_move; ?></a><a id="copy" class="button" style="background-image: url('view/image/filemanager/edit-copy.png');"><?php echo $button_copy; ?></a><a id="rename" class="button" style="background-image: url('view/image/filemanager/edit-rename.png');"><?php echo $button_rename; ?></a><a id="upload" class="button" style="background-image: url('view/image/filemanager/upload.png');"><?php echo $button_upload; ?></a><a id="refresh" class="button" style="background-image: url('view/image/filemanager/refresh.png');"><?php echo $button_refresh; ?></a><a id="addimage" class="button" style="background-image: url('view/image/filemanager/add-image.png');"><?php echo $button_addimage; ?></a></div>
+               ]]>
+               </add>
+           </operation>
+           <operation error="skip">
+               <search position="replace">
+                <![CDATA[$('#column-right a').removeAttr('class');]]>
+               </search>
+               <add trim="false">
+               <![CDATA[ ]]>
+               </add>
+           </operation>
+           <operation error="skip">
+               <search position="replace"><![CDATA[
+                name: 'image',
+               ]]></search>
+               <add trim="false"><![CDATA[
+                name: 'image[]',
+               ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="after"><![CDATA[
+                tree.select_branch(tree.selected);
+               ]]></search>
+               <add trim="false"><![CDATA[
+                for (var i=0; i<json.image.length; i++ ) {
+
+                     $.ajax({
+                        url: 'index.php?route=common/filemanager/image_ext&token=<?php echo $token;?>&image=' + encodeURIComponent(json.image[i]),
+                        dataType: 'text',
+                        success: function(response_json) {
+                            if ( response_json ) {
+                                response_json = eval("(" + response_json + ")");
+                                var image_id = parent.addImage();
+                                parent.$('#image' + image_id ).attr('value', response_json.image );
+                                parent.$('#thumb' + image_id ).replaceWith('<img src="' + response_json.text + '" alt="" id="thumb' + image_id +'" />');
+                            }
+                        }
+                    });
+
+                }
+               ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="after" offset="42"><![CDATA[
+                $('#create').bind('click', function() {
+               ]]></search>
+               <add trim="false"><![CDATA[
+    $('#addimage').bind('click', function() {
+         if ($('#column-right a.selected').length > 0) {
+            $('#column-right a.selected').each( function() { 
+                     var derectory  = 'data/';
+                     var path = derectory + $(this).find('input[name=\'image\']').attr('value');
+                     $.ajax({
+                        url: 'index.php?route=common/filemanager/image_ext&token=<?php echo $token;?>&image=' + encodeURIComponent( path),
+                        dataType: 'text',
+                        success: function(response_json) {
+                            if ( response_json ) {
+                                response_json = eval("(" + response_json + ")");
+                                var image_id = parent.addImage();
+                                parent.$('#image' + image_id ).attr('value', response_json.image );
+                                parent.$('#thumb' + image_id ).replaceWith('<img src="' + response_json.text + '" alt="" id="thumb' + image_id +'" />');
+                                alert(response_json.success);
+                            }
+                        }
+                    });
+            });
+         } else {
+            $('#column-right a').each( function() { 
+                     var derectory  = 'data/';
+                     var path = derectory + $(this).find('input[name=\'image\']').attr('value');
+                     $.ajax({
+                        url: 'index.php?route=common/filemanager/image_ext&token=<?php echo $token;?>&image=' + encodeURIComponent( $($.tree.focused().selected).attr('directory') + path),
+                        dataType: 'text',
+                        success: function(response_json) {
+                            if ( response_json ) {
+                                response_json = eval("(" + response_json + ")");
+                                var image_id = parent.addImage();
+                                parent.$('#image' + image_id ).attr('value', response_json.image );
+                                parent.$('#thumb' + image_id ).replaceWith('<img src="' + response_json.text + '" alt="" id="thumb' + image_id +'" />');
+                                alert(response_json.success);
+                            }
+                        }
+                    });
+
+            });
+         }
+    });
+               ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="replace" offset="74"><![CDATA[
+               $('#delete').bind('click', function() {
+               ]]></search>
+               <add trim="false"><![CDATA[
+   $('#delete').bind('click', function() {
+
+                                 
+            if ($('#column-right a.selected').length > 0) {
+
+                $('#column-right a.selected').each( function() { 
+                path = $(this).find('input[name=\'image\']').attr('value');
+                $.ajax({
+                    url: 'index.php?route=common/filemanager/delete&token=<?php echo $token; ?>',
+                    type: 'post',
+                    data: 'path=' + encodeURIComponent(path),
+                    dataType: 'json',
+                    success: function(json) {
+                        if (json.success) {
+                            var tree = $.tree.focused();
+                        
+                            tree.select_branch(tree.selected);
+                            
+                            alert(json.success);
+                        }
+                        
+                        if (json.error) {
+                            alert(json.error);
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });
+                });     
+            } else {
+                var tree = $.tree.focused();
+                
+                if (tree.selected) {
+                    $.ajax({
+                        url: 'index.php?route=common/filemanager/delete&token=<?php echo $token; ?>',
+                        type: 'post',
+                        data: 'path=' + encodeURIComponent($(tree.selected).attr('directory')),
+                        dataType: 'json',
+                        success: function(json) {
+                            if (json.success) {
+                                tree.select_branch(tree.parent(tree.selected));
+                                
+                                tree.refresh(tree.selected);
+                                
+                                alert(json.success);
+                            } 
+                            
+                            if (json.error) {
+                                alert(json.error);
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });         
+                } else {
+                    alert('<?php echo $error_select; ?>');
+                }           
+            }
+    });               
+            ]]></add>
+           </operation>
+           <operation error="skip">
+               <search position="replace" offset="91"><![CDATA[
+                $('#move').bind('click', function() {
+               ]]></search>
+               <add trim="false"><![CDATA[
+    $('#move').bind('click', function() {
+        $('#dialog').remove();
+        
+        html  = '<div id="dialog">';
+        html += '<?php echo $entry_move; ?> <select name="to"></select> <input type="button" value="<?php echo $button_submit; ?>" />';
+        html += '</div>';
+
+        $('#column-right').prepend(html);
+        
+        $('#dialog').dialog({
+            title: '<?php echo $button_move; ?>',
+            resizable: false
+        });
+
+        $('#dialog select[name=\'to\']').load('index.php?route=common/filemanager/folders&token=<?php echo $token; ?>');
+        
+        $('#dialog input[type=\'button\']').bind('click', function() {
+
+            if ($('#column-right a.selected').length > 0) {
+                $('#column-right a.selected').each( function() { 
+                    path = $(this).find('input[name=\'image\']').attr('value');
+                    $.ajax({
+                        url: 'index.php?route=common/filemanager/move&token=<?php echo $token; ?>',
+                        type: 'post',
+                        data: 'from=' + encodeURIComponent(path) + '&to=' + encodeURIComponent($('#dialog select[name=\'to\']').val()),
+                        dataType: 'json',
+                        success: function(json) {
+                            if (json.success) {
+                                $('#dialog').remove();
+                                
+                                var tree = $.tree.focused();
+                                
+                                tree.select_branch(tree.selected);
+                                
+                                alert(json.success);
+                            }
+                            
+                            if (json.error) {
+                                alert(json.error);
+                            }
+                        },
+                        error: function(xhr, ajaxOptions, thrownError) {
+                            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                        }
+                    });
+                });
+            } else {
+                var tree = $.tree.focused();
+                
+                $.ajax({
+                    url: 'index.php?route=common/filemanager/move&token=<?php echo $token; ?>',
+                    type: 'post',
+                    data: 'from=' + encodeURIComponent($(tree.selected).attr('directory')) + '&to=' + encodeURIComponent($('#dialog select[name=\'to\']').val()),
+                    dataType: 'json',
+                    success: function(json) {
+                        if (json.success) {
+                            $('#dialog').remove();
+                            
+                            tree.select_branch('#top');
+                                
+                            tree.refresh(tree.selected);
+                            
+                            alert(json.success);
+                        }                       
+                        
+                        if (json.error) {
+                            alert(json.error);
+                        }
+                    },
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+                    }
+                });             
+            }
+        });
+    });
+            ]]></add>
+           </operation>
+       </file>
+</modification>

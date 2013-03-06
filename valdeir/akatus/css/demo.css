@@ -1,0 +1,113 @@
+@import url('fonts/fonts.css');
+@import url('reset.css');
+
+/* General Demo Style */
+body{
+	background: #ddd;
+	color: rgba(255,255,255,1);
+	font-family:'Myriad Pro', Arial, sans-serif;
+	font-size: 15px;
+}
+a{
+	color: #fff;
+	text-decoration: none;
+}
+.container{
+	width: 100%;
+	position: relative;
+	overflow:hidden;
+}
+.clr{
+	clear: both;
+}
+h1.main{
+	font-size: 30px;
+	position:relative;
+	font-weight: 400;
+	text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+    padding: 10px;
+	text-align: center;
+	z-index: 1000;
+	-webkit-animation: appear 0.6s ease-in-out 6s backwards;
+	-moz-animation: appear 0.6s ease-in-out 6s backwards;
+}
+/* Header Style */
+.header{
+	font-family:'Arial Narrow', Arial, sans-serif;
+	line-height: 24px;
+	font-size: 11px;
+	background: #000;
+	opacity: 0.9;
+	text-transform: uppercase;
+	z-index: 9999;
+	position: relative;
+	-moz-box-shadow: 1px 0px 2px #000;
+	-webkit-box-shadow: 1px 0px 2px #000;
+	box-shadow: 1px 0px 2px #000;
+}
+.header a{
+	padding: 0px 10px;
+	letter-spacing: 1px;
+	color: #ddd;
+	display: block;
+	float: left;
+}
+.header a:hover{
+	color: #fff;
+}
+.header span.right{
+	float: right;
+}
+.header span.right a{
+	float: none;
+	display: inline;
+}
+p.demos{
+    position:relative;
+    z-index: 1000;
+	padding: 4px;
+	text-align: center;
+	-webkit-animation: appear 0.6s ease-in-out 6.2s backwards;
+	-moz-animation: appear 0.6s ease-in-out 6.2s backwards;
+}
+p.demos a{
+    display: inline-block;
+	padding: 2px 4px;
+	background: #fff;
+	color: #777;
+	font-family:'Arial Narrow', Arial, sans-serif;
+	text-transform: uppercase;
+	font-size: 11px;
+	box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+p.demos a:hover{
+    color: #fff;
+	background: #555;
+}
+p.demos a.current-demo,
+p.demos a.current-demo:hover{
+    font-weight: bold;
+	background: #333;
+	color: #fff;
+}
+@-webkit-keyframes appear{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+@-moz-keyframes appear{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
