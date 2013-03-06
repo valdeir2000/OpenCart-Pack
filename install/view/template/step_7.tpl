@@ -47,7 +47,7 @@
 			<br/>
 			<div class="buttons">
 				<a href="<?php echo $back; ?>" class="button left">Voltar</a>
-				<a href="indx.php?route=step_8" class="button right">Continuar</a>
+				<a href="index.php?route=step_8" class="button right">Continuar</a>
 			</div>
 		</form>
 	</div>
