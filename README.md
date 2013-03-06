@@ -34,7 +34,7 @@ Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua
 * [Very simple AJAX live search](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=65)
 
 **Tradução**
-* https://www.transifex.com/projects/p/opencart-brasil/[https://www.transifex.com/projects/p/opencart-brasil/]
+* [https://www.transifex.com/projects/p/opencart-brasil/](https://www.transifex.com/projects/p/opencart-brasil/)
 
 ### Instalação
 1. Extraia o arquivo OpenCart.zip no seu computador.
