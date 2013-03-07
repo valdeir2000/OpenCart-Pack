@@ -38,7 +38,7 @@ Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua
 
 ### Instalação
 1. Extraia o arquivo OpenCart.zip no seu computador.
-2. Copie o conteúdo da pasta `upload` para sua hospedagem.
+2. Copie o conteúdo para sua hospedagem.
 3. Acesse [http://www.SEUDOMINIO.com.br/](javascript:void(0).
 4. Siga os passos informado na tela
 
