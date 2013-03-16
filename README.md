@@ -44,6 +44,3 @@ Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua
 
 ### Equipe de Suporte
 * Valdeir Santana | valdeirpsr@hotmail.com.br
-
-Agradecimentos.
-Muito Obrigado a todos.
