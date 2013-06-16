@@ -29,6 +29,16 @@
 		</operation>
 		<operation error="skip">
 			<search position="replace" ><![CDATA[
+                        <li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
+			]]></search>
+			<add><![CDATA[
+                        <?php if($this->user->hasPermission('access','catalog/filter')) {  ?>
+                        <li><a href="<?php echo $filter; ?>"><?php echo $text_filter; ?></a></li>
+                        <?php } ?>
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace" ><![CDATA[
                         <li><a href="<?php echo $product; ?>"><?php echo $text_product; ?></a></li>
 			]]></search>
 			<add><![CDATA[
@@ -184,6 +194,16 @@
 			<add><![CDATA[
                         <?php if($this->user->hasPermission('access','sale/customer_group')) { ?>
                         <li><a href="<?php echo $customer_group; ?>"><?php echo $text_customer_group; ?></a></li>
+                        <?php } ?>
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+                        <li><a href="<?php echo $customer_ban_ip; ?>"><?php echo $text_customer_ban_ip; ?></a></li>
+			]]></search>
+			<add><![CDATA[
+                        <?php if($this->user->hasPermission('access','sale/customer_ban_ip')) { ?>
+                        <li><a href="<?php echo $customer_ban_ip; ?>"><?php echo $text_customer_ban_ip; ?></a></li>
                         <?php } ?>
 			]]></add>
 		</operation>
@@ -519,6 +539,16 @@
 		</operation>
 		<operation error="skip">
 			<search position="replace"><![CDATA[
+                        <li><a href="<?php echo $report_customer_online; ?>"><?php echo $text_report_customer_online; ?></a></li>
+			]]></search>
+			<add><![CDATA[
+                        <?php if($this->user->hasPermission('access','report/customer_online')) {?>
+                        <li><a href="<?php echo $report_customer_online; ?>"><?php echo $text_report_customer_online; ?></a></li>
+                        <?php } ?>
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[
                         <li><a href="<?php echo $report_customer_order; ?>"><?php echo $text_report_customer_order; ?></a></li>
 			]]></search>
 			<add><![CDATA[
@@ -595,5 +625,24 @@
 			]]></add>
 		</operation>
 	</file>
-</modification>
 
+	<file name="admin/controller/extension/module.php" error="log">
+		<operation>
+			<search position="before"><![CDATA[
+				$this->language->load('module/' . $extension);
+			]]></search>
+			<add><![CDATA[
+				if ($this->user->hasPermission('access','module/' . $extension)){
+			]]></add>
+		</operation>
+		<operation>
+			<search position="after" index="25"><![CDATA[
+				);
+			]]></search>
+			<add><![CDATA[
+				}
+			]]></add>
+		</operation>
+	</file>
+	
+</modification>
