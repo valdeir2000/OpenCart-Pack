@@ -6,7 +6,7 @@
   <file name="admin/view/template/common/filemanager.tpl">
     <operation>
       <search position="replace" offset="0"><![CDATA[<?php echo $button_refresh; ?></a>]]></search>
-      <add><![CDATA[<?php echo $button_refresh; ?></a> <input type="text" id="search" style="margin-top: 5px; width:80px;"/> <a id="btnSearch" class="button" style="background-image: url('view/image/country.png');"><?php echo $button_search; ?></a>]]></add>
+      <add><![CDATA[<?php echo $button_refresh; ?></a> <input type="text" id="search" placeholder="Pressione Enter" style="margin-top: 5px; width:80px;"/>]]></add>
     </operation>
     <operation>
       <search position="before"><![CDATA[</body>]]></search>
