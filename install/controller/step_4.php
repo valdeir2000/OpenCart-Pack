@@ -1,133 +1,150 @@
 <?php
+############################################
+# Autor: Valdeir Santana
+# Email: valdeir.naval@gmail.com
+# Site: http://www.valdeirsantana.com.br
+############################################
 class ControllerStep4 extends Controller {
+
 	public function index() {
-		$this->document->setTitle($this->language->get('heading_step_4'));
 
-		$data['heading_step_4'] = $this->language->get('heading_step_4');
-		$data['heading_step_4_small'] = $this->language->get('heading_step_4_small');
+		$data['extensions'] = array();
+		
+		/* Captura módulos */
+		$files = glob(DIR_OPENCART . 'admin/controller/module/*.php');
 
-		$data['text_license'] = $this->language->get('text_license');
-		$data['text_installation'] = $this->language->get('text_installation');
-		$data['text_configuration'] = $this->language->get('text_configuration');
-		$data['text_finished'] = $this->language->get('text_finished');
-		$data['text_congratulation'] = $this->language->get('text_congratulation');
-		$data['text_forget'] = $this->language->get('text_forget');
-		$data['text_shop'] = $this->language->get('text_shop');
-		$data['text_login'] = $this->language->get('text_login');
-		$data['text_loading'] = $this->language->get('text_loading');
-		$data['text_store'] = $this->language->get('text_store');
-		$data['text_mail_list'] = $this->language->get('text_mail_list');
-		$data['text_mail_list_small'] = $this->language->get('text_mail_list_small');
-		$data['text_openbay'] = $this->language->get('text_openbay');
-		$data['text_maxmind'] = $this->language->get('text_maxmind');
-		$data['text_more_info'] = $this->language->get('text_more_info');
-		$data['text_facebook'] = $this->language->get('text_facebook');
-		$data['text_facebook_info'] = $this->language->get('text_facebook_info');
-		$data['text_facebook_link'] = $this->language->get('text_facebook_link');
-		$data['text_forum'] = $this->language->get('text_forum');
-		$data['text_forum_info'] = $this->language->get('text_forum_info');
-		$data['text_forum_link'] = $this->language->get('text_forum_link');
-		$data['text_commercial'] = $this->language->get('text_commercial');
-		$data['text_commercial_info'] = $this->language->get('text_commercial_info');
-		$data['text_commercial_link'] = $this->language->get('text_commercial_link');
-		$data['text_view'] = $this->language->get('text_view');
-		$data['text_download'] = $this->language->get('text_download');
-		$data['text_downloads'] = $this->language->get('text_downloads');
-		$data['text_price'] = $this->language->get('text_price');
-		$data['text_view'] = $this->language->get('text_view');
+		if ($files) {
+			foreach ($files as $file) {
 
-		$data['button_join'] = $this->language->get('button_join');
-		$data['button_setup'] = $this->language->get('button_setup');
+				/* Captura nome do arquivo */
+				$extension = basename($file, '.php');
+				
+				/* Carrega classe de linguagem */
+				$language = new Language('../../admin/language/english/');
 
-		$data['link_maxmind'] = $this->url->link('maxmind');
-		$data['link_openbay'] = $this->url->link('openbay');
-
-		if (isset($this->session->data['success'])) {
-			$data['success'] = $this->session->data['success'];
-
-			unset($this->session->data['success']);
-		} else {
-			$data['success'] = '';
-		}
-
-		$languages = array();
-
-		if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-			preg_match_all('/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $language_parse);
-
-			if (count($language_parse[1])) {
-				$languages = array_combine($language_parse[1], $language_parse[4]);
-
-				foreach ($languages as $lang => $val) {
-					if ($val === '') {
-						$languages[$lang] = 1;
-					}
-				}
-
-				arsort($languages, SORT_NUMERIC);
+				/* Carrega linguagem do módulo */
+				$language->load('module/' . $extension);
+				
+				/* Salva os módulos disponíveis */
+				$data['extensions'][$extension] = array(
+					'name' => $language->get('heading_title'),
+					'extension' => $extension,
+					'template' => 'module/' . $extension,
+				);
 			}
 		}
 
-		if (!empty($languages)) {
-			reset($languages);
-			$data['language'] = key($languages);
-		} else {
-			$data['language'] = '';
-		}
 
+		/* Butões */
+		$data['button_continue'] = $this->language->get('button_continue');
+		$data['button_back'] = $this->language->get('button_back');
+
+		/* Links */
+		$data['action'] = $this->url->link('step_4/install');
+		$data['back'] = $this->url->link('step_3');
+
+		/* Controller */
 		$data['footer'] = $this->load->controller('footer');
 		$data['header'] = $this->load->controller('header');
 
+		/* Template */
 		$this->response->setOutput($this->load->view('step_4.tpl', $data));
 	}
 
-	public function extensions() {
-		$defaults = array(
-			CURLOPT_POST => 1,
-			CURLOPT_HEADER => 0,
-			CURLOPT_URL => 'http://www.opencart.com/index.php?route=extension/json/extensions',
-			CURLOPT_USERAGENT => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
-			CURLOPT_FRESH_CONNECT => 1,
-			CURLOPT_RETURNTRANSFER => 1,
-			CURLOPT_FORBID_REUSE => 1,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_SSL_VERIFYPEER => 0,
-			CURLOPT_SSL_VERIFYHOST => 0,
-			CURLOPT_POSTFIELDS => array(),
-		);
+	public function install() {
 
-		$ch = curl_init();
-		curl_setopt_array($ch, ($defaults));
-		$result = curl_exec($ch);
-		curl_close($ch);
+		/* Salva informações dos módulos */
+		if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->request->server['HTTP_REFERER'] != $this->url->link('step_4')) {
+			
+			/* Model Setting */
+			$this->load->model('setting');
 
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput($result);
+			/* Salva configurações */
+			$this->model_setting->editSetting($this->request->post['module_name'], $this->request->post['config']);
+			
+			/* Adiciona Permissões */
+			$this->model_setting->addPermission(1, 'access', 'module/' . $this->request->post['module_name']);
+			$this->model_setting->addPermission(1, 'modify', 'module/' . $this->request->post['module_name']);
+
+			/* Redireciona para o próximo passo */
+			if (empty($this->request->post['modules'])) {
+				$this->response->redirect($this->url->link('step_5'));
+			}
+		}
+
+		/* Link */
+		$data['action'] = $this->url->link('step_4/install');
+		$data['back'] = $this->url->link('step_4');
+
+		/* Botões */
+		$data['button_back'] = $this->language->get('button_back');
+		$data['button_continue'] = $this->language->get('button_continue');
+
+		/* Módulo atual */
+		$data['module_name'] = reset($this->request->post['modules']);
+
+		/* Captura código do módulo */
+		$code = $this->get_template(reset($this->request->post['modules']));
+
+		/* Carrega libravia */
+		$this->load->library('simple_html_dom');
+
+		/* Classe responsável pela manipulação do HTML */
+		$html = new simpleHtmlDom();
+		$response = $html->str_get_html($code)->find('form');
+
+		/* Captura código do formulário */
+		$data['code'] = reset($response);
+
+		/* Deleta primeiro array */
+		array_shift($this->request->post['modules']);
+
+		/* Armazena os módulos para configuração */
+		$data['modules'] = $this->request->post['modules'];
+
+		/* Controller */
+		$data['footer'] = $this->load->controller('footer');
+		$data['header'] = $this->load->controller('header');
+
+		/* Template */
+		$this->response->setOutput($this->load->view('extension_template.tpl', $data));
+
 	}
 
-	public function language() {
-		$language = $this->request->post['language'];
+	private function get_template($extension = '') {
+		if (!empty($extension)) {
 
-		$defaults = array(
-			CURLOPT_POST => 1,
-			CURLOPT_HEADER => 0,
-			CURLOPT_URL => 'http://www.opencart.com/index.php?route=extension/json/languages',
-			CURLOPT_USERAGENT => "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1",
-			CURLOPT_FRESH_CONNECT => 1,
-			CURLOPT_RETURNTRANSFER => 1,
-			CURLOPT_FORBID_REUSE => 1,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_SSL_VERIFYPEER => 0,
-			CURLOPT_SSL_VERIFYHOST => 0,
-			CURLOPT_POSTFIELDS => array('language' => $language),
-		);
+			/* Define usuário como logado */
+			$this->session->data['user_id'] = '1';
+			$this->session->data['token'] = 'valdeir';
 
-		$ch = curl_init();
-		curl_setopt_array($ch, ($defaults));
-		$result = curl_exec($ch);
-		curl_close($ch);
+			/* Url do módulo */
+			$url = HTTP_OPENCART . 'admin/index.php?route=module/' . $extension . '&token=valdeir';
 
-		$this->response->addHeader('Content-Type: application/json');
-		$this->response->setOutput($result);
+			/* Armazena session */
+			$strCookie = session_name() . '=' . $_COOKIE[ session_name() ] . '; path=/';
+			session_write_close(); 
+
+			/* CURL */
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_HEADER, false);
+			curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+			curl_setopt($ch, CURLOPT_USERAGENT, $this->request->server['HTTP_USER_AGENT']);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_FORBID_REUSE, false);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_COOKIESESSION, true);
+			curl_setopt($ch, CURLOPT_COOKIE, $strCookie);
+			$response = curl_exec($ch);
+			curl_close($ch);
+
+			return $response;
+		} else {
+			return false;
+		}
 	}
 }
+?>
