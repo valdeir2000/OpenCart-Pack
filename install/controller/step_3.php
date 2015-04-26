@@ -79,6 +79,13 @@ class ControllerStep3 extends Controller {
 
 			fclose($file);
 
+			$this->session->data['db']['DB_DRIVER'] = addslashes($this->request->post['db_driver']);
+			$this->session->data['db']['DB_HOSTNAME'] = addslashes($this->request->post['db_hostname']);
+			$this->session->data['db']['DB_USERNAME'] = addslashes($this->request->post['db_username']);
+			$this->session->data['db']['DB_PASSWORD'] = addslashes(html_entity_decode($this->request->post['db_password']));
+			$this->session->data['db']['DB_DATABASE'] = addslashes($this->request->post['db_database']);
+			$this->session->data['db']['DB_PREFIX'] = addslashes($this->request->post['db_prefix']);
+
 			$this->response->redirect($this->url->link('step_4'));
 		}
 
