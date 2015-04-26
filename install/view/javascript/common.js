@@ -37,5 +37,35 @@ $(document).ready(function() {
 		}		
 		
 		$('#menu a[href*=\'index.php?route=' + url + '\']').parents('li[id]').addClass('active');
-	}	
+	}
+
+    // tooltips on hover
+    $('[data-toggle=\'tooltip\']').tooltip({container: 'body', html: true});
+
+    // Makes tooltips work on ajax generated content
+    $(document).ajaxStop(function() {
+        $('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+    });
+    
+    // https://github.com/opencart/opencart/issues/2595
+    $.event.special.remove = {
+        remove: function(o) {
+            if (o.handler) { 
+                o.handler.apply(this, arguments);
+            }
+        }
+    }
+    
+    $('[data-toggle=\'tooltip\']').on('remove', function() {
+        $(this).tooltip('destroy');
+    }); 
+
+    // Highlight any found errors
+    $('.text-danger').each(function() {
+        var element = $(this).parent().parent();
+        
+        if (element.hasClass('form-group')) {
+            element.addClass('has-error');
+        }
+    });
 });
