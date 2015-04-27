@@ -59,11 +59,13 @@
 
   		$('form').attr('action', '<?php echo $action ?>');
 
-  		$('form input, form textarea, form select').map(function(i, e){
-  			if ($(e).attr('name') != 'module_name' && $(e).attr('name') != 'modules[]') {
-  				$(e).attr('name', 'config[' + $(e).attr('name') + ']');
-  			}
-  		})
+      $('form input, form textarea, form select').map(function(i, e){
+        if (typeof($(e).attr("name")) != 'undefined') {
+          if ($(e).attr('name') != 'module_name' && $(e).attr('name') != 'modules[]') {
+            $(e).attr('name', 'config[' + $(e).attr('name') + ']');
+          }
+        }
+      })
   		
   		$('#submit').attr('form', $('form').attr('id'));
   	})
