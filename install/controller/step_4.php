@@ -34,7 +34,6 @@ class ControllerStep4 extends Controller {
 			}
 		}
 
-
 		/* Butões */
 		$data['button_continue'] = $this->language->get('button_continue');
 		$data['button_back'] = $this->language->get('button_back');
@@ -71,6 +70,9 @@ class ControllerStep4 extends Controller {
 				$this->response->redirect($this->url->link('step_5'));
 			}
 		}
+
+		/* Passo atual */
+		$data['step'] = 4;
 
 		/* Link */
 		$data['action'] = $this->url->link('step_4/install');

@@ -2,7 +2,8 @@
 <div class="container">
   <header class="div row">
     <div class="col-sm-6">
-      <h1 class="pull-left">4<small>/finish</small></h1>
+      <h1 class="pull-left"><?php echo $step ?><small>/finish</small></h1>
+      <h3>Configure o módulo<small>Preencha os campos abaixo</small></h3>
     </div>
     <div class="col-sm-6">
       <div id="logo" class="pull-right hidden-xs">
@@ -35,11 +36,11 @@
 
     <div class="col-sm-3">
       <ul class="list-group">
-        <li class="list-group-item">Passo 1</li>
-        <li class="list-group-item">Passo 2</li>
-        <li class="list-group-item">Passo 3</li>
-        <li class="list-group-item"><b>Passo 4</b></li>
-        <li class="list-group-item">Passo 5</li>
+        <li id="step1" class="list-group-item">Passo 1</li>
+        <li id="step2" class="list-group-item">Passo 2</li>
+        <li id="step3" class="list-group-item">Passo 3</li>
+        <li id="step4" class="list-group-item">Passo 4</li>
+        <li id="step5" class="list-group-item">Passo 5</li>
       </ul>
     </div>
   </div>
@@ -48,6 +49,9 @@
   	$(function(){
 
   		var html = '';
+      var current_step = '#step<?php echo $step ?>';
+
+      $('.list-group ' + current_step).html('<b>' + $('.list-group ' + current_step).text() + '</b>');
 
   		<?php foreach($modules as $key => $module) { ?>
   		html += '<input type="hidden" name="modules[]" value="<?php echo $modules[$key] ?>" />';
