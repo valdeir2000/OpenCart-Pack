@@ -40,7 +40,7 @@ class ControllerStep5 extends Controller {
 
 		/* Links */
 		$data['action'] = $this->url->link('step_5/install');
-		$data['back'] = $this->url->link('step_3');
+		$data['back'] = $this->url->link('step_4');
 
 		/* Controller */
 		$data['footer'] = $this->load->controller('footer');
@@ -76,7 +76,7 @@ class ControllerStep5 extends Controller {
 
 		/* Link */
 		$data['action'] = $this->url->link('step_5/install');
-		$data['back'] = $this->url->link('step_5');
+		$data['back'] = $this->url->link('step_4');
 
 		/* Botões */
 		$data['button_back'] = $this->language->get('button_back');
