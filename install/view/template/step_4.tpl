@@ -3,7 +3,7 @@
   <header class="div row">
     <div class="col-sm-6">
       <h1 class="pull-left">4<small>/finish</small></h1>
-      <h3>Módulos<small>Escolha seus módulos e configure</small>
+      <h3>Módulos<small>Escolha seus módulos iniciais</small>
     </div>
     <div class="col-sm-6">
       <div id="logo" class="pull-right hidden-xs">
