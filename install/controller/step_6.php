@@ -40,7 +40,7 @@ class ControllerStep6 extends Controller {
 
 		/* Links */
 		$data['action'] = $this->url->link('step_6/install');
-		$data['back'] = $this->url->link('step_4');
+		$data['back'] = $this->url->link('step_5');
 
 		/* Controller */
 		$data['footer'] = $this->load->controller('footer');
@@ -72,7 +72,7 @@ class ControllerStep6 extends Controller {
 		}
 
 		/* Passo atual */
-		$data['step'] = 5;
+		$data['step'] = 6;
 
 		/* Link */
 		$data['action'] = $this->url->link('step_6/install');
