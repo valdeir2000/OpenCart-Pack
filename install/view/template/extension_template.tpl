@@ -2,8 +2,8 @@
 <div class="container">
   <header class="div row">
     <div class="col-sm-6">
-      <h1 class="pull-left"><?php echo $step ?><small>/finish</small></h1>
-      <h3>Configure o módulo<small>Preencha os campos abaixo</small></h3>
+      <h1 class="pull-left"><?php echo $step ?><small>/10</small></h1>
+      <h3><?php echo $text_setting_module ?><small><?php echo $text_config_module ?></small></h3>
     </div>
     <div class="col-sm-6">
       <div id="logo" class="pull-right hidden-xs">
@@ -36,11 +36,17 @@
 
     <div class="col-sm-3">
       <ul class="list-group">
-        <li id="step1" class="list-group-item">Passo 1</li>
-        <li id="step2" class="list-group-item">Passo 2</li>
-        <li id="step3" class="list-group-item">Passo 3</li>
-        <li id="step4" class="list-group-item">Passo 4</li>
-        <li id="step5" class="list-group-item">Passo 5</li>
+        <li id="step1" class="list-group-item"><?php echo $text_license; ?></li>
+        <li id="step2" class="list-group-item"><?php echo $text_installation; ?></li>
+        <li id="step3" class="list-group-item"><?php echo $text_configuration; ?></li>
+        <li id="step4" class="list-group-item"><?php echo $text_modules; ?></li>
+        <li id="step5" class="list-group-item"><?php echo $text_payment_method; ?></li>
+        <li id="step6" class="list-group-item"><?php echo $text_shipping_method; ?></li>
+        <li id="step7" class="list-group-item"><?php echo $text_order_total; ?></li>
+        <li id="step8" class="list-group-item"><?php echo $text_feed; ?></li>
+        <li id="step9" class="list-group-item"><?php echo $text_modification; ?></li>
+        <li id="step10" class="list-group-item"><?php echo $text_themes; ?></li>
+        <li id="step11" class="list-group-item"><?php echo $text_finished; ?></li>
       </ul>
     </div>
   </div>

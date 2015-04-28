@@ -1,11 +1,11 @@
 <?php echo $header ?>
 <div class="container">
   <header class="div row">
-    <div class="col-sm-6">
-      <h1 class="pull-left">6<small>/finish</small></h1>
-      <h3>Modificações<small>Ative as modificações dos módulos intalados</small>
+    <div class="col-sm-7">
+      <h1 class="pull-left">9<small>/11</small></h1>
+      <h3><?php echo $heading_step_9 ?><small><?php echo $heading_step_9_small ?></small>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
       <div id="logo" class="pull-right hidden-xs">
         <img src="view/image/logo.png" alt="OpenCart" title="OpenCart" />
       </div>
@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-sm-9">
       <form action="<?php echo $action ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <p>Escolha os módulos</p>
+        <p><?php echo $text_choose_modules ?></p>
         <fieldset>
           <table class="table-responsive">
             <table class="table table-hover table-bordered">
@@ -55,14 +55,17 @@
 
     <div class="col-sm-3">
       <ul class="list-group">
-        <li class="list-group-item">Passo 1</li>
-        <li class="list-group-item">Passo 2</li>
-        <li class="list-group-item">Passo 3</li>
-        <li class="list-group-item">Passo 4</li>
-        <li class="list-group-item">Passo 5</li>
-        <li class="list-group-item">Passo 6</li>
-        <li class="list-group-item"><b>Passo 7</b></li>
-        <li class="list-group-item">Passo 8</li>
+        <li class="list-group-item"><?php echo $text_license; ?></li>
+        <li class="list-group-item"><?php echo $text_installation; ?></li>
+        <li class="list-group-item"><?php echo $text_configuration; ?></li>
+        <li class="list-group-item"><?php echo $text_modules; ?></li>
+        <li class="list-group-item"><?php echo $text_payment_method; ?></li>
+        <li class="list-group-item"><?php echo $text_shipping_method; ?></li>
+        <li class="list-group-item"><?php echo $text_order_total; ?></li>
+        <li class="list-group-item"><?php echo $text_feed; ?></li>
+        <li class="list-group-item"><b><?php echo $text_modification; ?></b></li>
+        <li class="list-group-item"><?php echo $text_themes; ?></li>
+        <li class="list-group-item"><?php echo $text_finished; ?></li>
       </ul>
     </div>
   </div>

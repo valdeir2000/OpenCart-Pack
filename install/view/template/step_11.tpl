@@ -3,9 +3,9 @@
   <header>
     <div class="row">
       <div class="col-sm-6">
-        <h1 class="pull-left">4<small>/4</small></h1>
-        <h3><?php echo $heading_step_4; ?><br>
-          <small><?php echo $heading_step_4_small; ?></small></h3>
+        <h1 class="pull-left">11<small>/11</small></h1>
+        <h3><?php echo $heading_step_11; ?><br>
+          <small><?php echo $heading_step_11_small; ?></small></h3>
       </div>
       <div class="col-sm-6">
         <div id="logo" class="pull-right hidden-xs"> <img src="view/image/logo.png" alt="OpenCart" title="OpenCart" /> </div>

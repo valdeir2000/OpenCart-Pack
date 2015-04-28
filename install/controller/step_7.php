@@ -9,6 +9,11 @@ class ControllerStep7 extends Controller {
 	public function index() {
 
 		$data['extensions'] = array();
+
+		$this->document->setTitle($this->language->get('heading_step_7'));
+
+		$data['heading_step_7'] = $this->language->get('heading_step_7');
+		$data['heading_step_7_small'] = $this->language->get('heading_step_7_small');
 		
 		/* Captura módulos */
 		$files = glob(DIR_OPENCART . 'admin/controller/total/*.php');
@@ -20,7 +25,7 @@ class ControllerStep7 extends Controller {
 				$extension = basename($file, '.php');
 				
 				/* Carrega classe de linguagem */
-				$language = new Language('../../admin/language/english/');
+				$language = new Language('../../admin/language/portuguese-br/');
 
 				/* Carrega linguagem do módulo */
 				$language->load('total/' . $extension);
@@ -33,6 +38,20 @@ class ControllerStep7 extends Controller {
 				);
 			}
 		}
+
+		/* Text */
+		$data['text_license'] = $this->language->get('text_license');
+		$data['text_installation'] = $this->language->get('text_installation');
+		$data['text_configuration'] = $this->language->get('text_configuration');
+		$data['text_modules'] = $this->language->get('text_modules');
+		$data['text_payment_method'] = $this->language->get('text_payment_method');
+		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+		$data['text_order_total'] = $this->language->get('text_order_total');
+		$data['text_feed'] = $this->language->get('text_feed');
+		$data['text_modification'] = $this->language->get('text_modification');
+		$data['text_themes'] = $this->language->get('text_themes');
+		$data['text_finished'] = $this->language->get('text_finished');
+		$data['text_choose_modules'] = $this->language->get('text_choose_modules');
 
 		/* Butões */
 		$data['button_continue'] = $this->language->get('button_continue');
@@ -71,12 +90,32 @@ class ControllerStep7 extends Controller {
 			}
 		}
 
+		/* Redireciona para o próximo passo */
+		if (empty($this->request->post['modules'])) {
+			$this->response->redirect($this->url->link('step_8'));
+		}
+
 		/* Passo atual */
 		$data['step'] = 7;
 
 		/* Link */
 		$data['action'] = $this->url->link('step_7/install');
-		$data['back'] = $this->url->link('step_6');
+		$data['back'] = $this->url->link('step_7');
+
+		/* Text */
+		$data['text_license'] = $this->language->get('text_license');
+		$data['text_installation'] = $this->language->get('text_installation');
+		$data['text_configuration'] = $this->language->get('text_configuration');
+		$data['text_modules'] = $this->language->get('text_modules');
+		$data['text_payment_method'] = $this->language->get('text_payment_method');
+		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+		$data['text_order_total'] = $this->language->get('text_order_total');
+		$data['text_feed'] = $this->language->get('text_feed');
+		$data['text_modification'] = $this->language->get('text_modification');
+		$data['text_themes'] = $this->language->get('text_themes');
+		$data['text_finished'] = $this->language->get('text_finished');
+		$data['text_setting_module'] = $this->language->get('text_setting_module');
+		$data['text_config_module'] = $this->language->get('text_config_module');
 
 		/* Botões */
 		$data['button_back'] = $this->language->get('button_back');

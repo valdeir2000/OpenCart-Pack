@@ -13,6 +13,13 @@ class ControllerStep1 extends Controller {
 		$data['text_license'] = $this->language->get('text_license');
 		$data['text_installation'] = $this->language->get('text_installation');
 		$data['text_configuration'] = $this->language->get('text_configuration');
+		$data['text_modules'] = $this->language->get('text_modules');
+		$data['text_payment_method'] = $this->language->get('text_payment_method');
+		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+		$data['text_order_total'] = $this->language->get('text_order_total');
+		$data['text_feed'] = $this->language->get('text_feed');
+		$data['text_modification'] = $this->language->get('text_modification');
+		$data['text_themes'] = $this->language->get('text_themes');
 		$data['text_finished'] = $this->language->get('text_finished');
 		$data['text_terms'] = $this->language->get('text_terms');
 

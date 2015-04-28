@@ -2,8 +2,8 @@
 <div class="container">
   <header class="div row">
     <div class="col-sm-6">
-      <h1 class="pull-left">5<small>/finish</small></h1>
-      <h3>Formas de Pagamento<small>Escolha as formas de pagamento iniciais</small>
+      <h1 class="pull-left">5<small>/11</small></h1>
+      <h3><?php echo $heading_step_5 ?><small><?php echo $heading_step_5_small ?></small>
     </div>
     <div class="col-sm-6">
       <div id="logo" class="pull-right hidden-xs">
@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-sm-9">
       <form action="<?php echo $action ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <p>Escolha os módulos</p>
+        <p><?php echo $text_choose_modules ?></p>
         <fieldset>
           <?php foreach($extensions as $extension) { ?>
           <div class="col-sm-6">
@@ -41,12 +41,17 @@
 
     <div class="col-sm-3">
       <ul class="list-group">
-        <li class="list-group-item">Passo 1</li>
-        <li class="list-group-item">Passo 2</li>
-        <li class="list-group-item">Passo 3</li>
-        <li class="list-group-item">Passo 4</li>
-        <li class="list-group-item"><b>Passo 5</b></li>
-        <li class="list-group-item">Passo 6</li>
+        <li class="list-group-item"><?php echo $text_license; ?></li>
+        <li class="list-group-item"><?php echo $text_installation; ?></li>
+        <li class="list-group-item"><?php echo $text_configuration; ?></li>
+        <li class="list-group-item"><?php echo $text_modules; ?></li>
+        <li class="list-group-item"><b><?php echo $text_payment_method; ?></b></li>
+        <li class="list-group-item"><?php echo $text_shipping_method; ?></li>
+        <li class="list-group-item"><?php echo $text_order_total; ?></li>
+        <li class="list-group-item"><?php echo $text_feed; ?></li>
+        <li class="list-group-item"><?php echo $text_modification; ?></li>
+        <li class="list-group-item"><?php echo $text_themes; ?></li>
+        <li class="list-group-item"><?php echo $text_finished; ?></li>
       </ul>
     </div>
   </div>

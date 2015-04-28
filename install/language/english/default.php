@@ -1,45 +1,73 @@
 <?php
 // Heading
-$_['heading_step_1']         = 'License agreement';
-$_['heading_step_1_small']   = 'Please read the OpenCart licence agreement';
-$_['heading_step_2']         = 'Pre-Installation';
-$_['heading_step_2_small']   = 'Check your server is set-up correctly';
-$_['heading_step_3']         = 'Configuration';
-$_['heading_step_3_small']   = 'Enter your database and administration details';
-$_['heading_step_4']         = 'Installation complete';
-$_['heading_step_4_small']   = 'Ready to start selling!';
+$_['heading_step_1']         = 'Contrato de Licença';
+$_['heading_step_1_small']   = 'Por favor, leia o contrato de licença do OpenCart';
+$_['heading_step_2']         = 'Pré-Instalação';
+$_['heading_step_2_small']   = 'Verifique se o seu servidor está configurado corretamente';
+$_['heading_step_3']         = 'Configuração';
+$_['heading_step_3_small']   = 'Informe os detalhes do banco de dados e administração';
+$_['heading_step_4']         = 'Módulos';
+$_['heading_step_4_small']   = 'Escolha seus módulos iniciais';
+$_['heading_step_5']         = 'Formas de Pagamento';
+$_['heading_step_5_small']   = 'Escolha as formas de pagamento iniciais';
+$_['heading_step_6']         = 'Formas de Entrega';
+$_['heading_step_6_small']   = 'Escolha as formas de entrega iniciais';
+$_['heading_step_7']         = 'Total do pedido';
+$_['heading_step_7_small']   = 'Listando total do pedido';
+$_['heading_step_8']         = 'Feed';
+$_['heading_step_8_small']   = 'Configure as opções de Feed';
+$_['heading_step_9']         = 'Modificações';
+$_['heading_step_9_small']   = 'Ative as modificações dos módulos instalados anteriormente';
+$_['heading_step_10']        = 'Temas';
+$_['heading_step_10_small']  = 'Escolha o tema de sua loja';
+$_['heading_step_11']        = 'Finalização';
+$_['heading_step_11_small']  = 'Obrigado por instalar o OpenCart Pack Nacional';
 $_['heading_maxmind']        = 'MaxMind';
-$_['heading_maxmind_small']  = 'Fraud detection service.';
+$_['heading_maxmind_small']  = 'Serviço de Detecção de Fraudes.';
 $_['heading_openbay']        = 'OpenBay Pro';
-$_['heading_openbay_small']  = 'Multi marketplace integration';
+$_['heading_openbay_small']  = 'Integração Multi Marketplace';
 
 // Text
-$_['text_license']           = 'License';
-$_['text_installation']      = 'Pre-Installation';
-$_['text_configuration']     = 'Configuration';
-$_['text_finished']          = 'Finished';
-$_['text_install_php']       = '1. Please configure your PHP settings to match requirements listed below.';
-$_['text_install_extension'] = '2. Please make sure the PHP extensions listed below are installed.';
-$_['text_install_db']        = '3. Please ensure you have at least one available database driver.';
-$_['text_install_file']      = '4. Please make sure you have set the correct permissions on the files list below.';
-$_['text_install_directory'] = '5. Please make sure you have set the correct permissions on the directories list below.';
-$_['text_db_connection']     = '1. Please enter your database connection details.';
-$_['text_db_administration'] = '2. Please enter a username and password for the administration.';
-$_['text_congratulation']    = 'Congratulations! You have successfully installed OpenCart.';
-$_['text_setting']           = 'PHP Settings';
-$_['text_current']           = 'Current Settings';
-$_['text_required']          = 'Required Settings';
-$_['text_extension']         = 'Extension Settings';
+$_['text_license']           = 'Licença';
+$_['text_installation']      = 'Pré-Instalação';
+$_['text_configuration']     = 'Configuração';
+$_['text_modules']           = 'Módulos';
+$_['text_payment_method']    = 'Formas de Pagamento';
+$_['text_shipping_method']   = 'Formas de Entrega';
+$_['text_order_total']       = 'Total do Pedido';
+$_['text_feed']              = 'Feed';
+$_['text_modification']      = 'Modificações';
+$_['text_themes']            = 'Temas';
+$_['text_finished']          = 'Finalização';
+
+$_['text_install_php']       = '1. Por favor, configurar as definições de PHP para corresponder aos requisitos listados abaixo.';
+$_['text_install_extension'] = '2. Por favor, certifique-se as extensões do PHP listados abaixo estão instalados.';
+$_['text_install_db']        = '3. Por favor, verifique se você tem pelo menos um driver de banco de dados disponível.';
+$_['text_install_file']      = '4. Por favor, certifique-se de definir as permissões corretas na lista de arquivos abaixo.';
+$_['text_install_directory'] = '5. Por favor, certifique-se de definir as permissões corretas na lista de diretórios abaixo.';
+$_['text_db_connection']     = '1. Digite os dados para conexão com o banco de dados';
+$_['text_db_administration'] = '2. Por favor insira um nome de usuário e senha para a administração.';
+$_['text_choose_modules']    = 'Escolha os módulos abaixo';
+$_['text_setting_module']    = 'Configure o módulo';
+$_['text_config_module']     = 'Preencha os campos abaixo';
+
+$_['text_congratulation']    = 'Parabéns! Você instalou o OpenCart com sucesso.';
+$_['text_setting']           = 'Configurações PHP';
+$_['text_current']           = 'Configurações Atuais';
+$_['text_required']          = 'Configurações Obrigatórias';
+$_['text_extension']         = 'Configurações da Extensão';
+
 $_['text_database']          = 'Database Driver';
-$_['text_file']              = 'Files';
-$_['text_directory']         = 'Directories';
-$_['text_status']            = 'Status';
-$_['text_version']           = 'PHP Version';
+$_['text_file']              = 'Arquivos';
+$_['text_directory']         = 'Diretórios';
+$_['text_status']            = 'Situação';
+$_['text_version']           = 'Versão do PHP';
 $_['text_global']            = 'Register Globals';
 $_['text_magic']             = 'Magic Quotes GPC';
 $_['text_file_upload']       = 'File Uploads';
 $_['text_session']           = 'Session Auto Start';
-$_['text_db']            	 = 'Database';
+
+$_['text_db']            	   = 'Banco de dados';
 $_['text_mysqli']            = 'MySQLi';
 $_['text_mysql']             = 'MySQL';
 $_['text_mpdo']              = 'mPDO';
@@ -49,82 +77,89 @@ $_['text_mcrypt']            = 'mCrypt';
 $_['text_zlib']              = 'ZLIB';
 $_['text_zip']               = 'ZIP';
 $_['text_mbstring']          = 'mbstring';
-$_['text_on']                = 'On';
-$_['text_off']               = 'Off';
-$_['text_writable']          = 'Writable';
-$_['text_unwritable']        = 'Unwritable';
-$_['text_missing']           = 'Missing';
-$_['text_forget']            = 'Don\'t forget to delete your installation directory!';
-$_['text_shop']              = 'Go to your Online Shop';
-$_['text_login']             = 'Login to your Administration';
-$_['text_project']           = 'Project Homepage';
-$_['text_documentation']     = 'Documentation';
-$_['text_support']           = 'Support Forums';
-$_['text_footer']            = 'Copyright © 2014 OpenCart - All rights reserved';
-$_['text_loading']           = 'Loading modules...';
-$_['text_store']             = 'visit the extensions store';
-$_['text_mail_list']         = 'Join the mailing list';
-$_['text_mail_list_small']   = 'Stay informed of OpenCart updates and events.';
-$_['text_openbay']   		 = 'OpenBay Pro gives merchants the ability to link their store with 3rd party markets like eBay and Amazon. Import orders, list items and handle shipping information direct from OpenCart...';
-$_['text_maxmind']   		 = 'MaxMind provides merchants the ability to identify risky transactions quickly, reducing the risk of fraud and minimises the time spent reviewing orders by giving a risk score for each one...';
-$_['text_more_info']   		 = 'More information';
-$_['text_facebook']   		 = 'Like us on Facebook';
-$_['text_facebook_info']     = 'Tell us how much you like OpenCart!';
-$_['text_facebook_link']     = 'Visit our Facebook page';
-$_['text_forum']    	 	 = 'Community forums';
-$_['text_forum_info']    	 = 'Get help from other OpenCart users';
-$_['text_forum_link']    	 = 'Visit our forums';
-$_['text_commercial']    	 = 'Commercial support';
-$_['text_commercial_info']   = 'Development services from OpenCart partners';
-$_['text_commercial_link']   = 'Visit our partner page';
-$_['text_view']   		     = 'View details';
-$_['text_download']   		 = 'Download';
-$_['text_downloads']   		 = 'Downloads';
-$_['text_price']   		 	 = 'Price';
-$_['text_view']   		     = 'View details';
-$_['text_maxmind_success']   = 'MaxMind fraud service has been installed';
-$_['text_maxmind_top']   	 = 'If you don\'t have a license key you can';
-$_['text_maxmind_link']   	 = 'sign up here';
-$_['text_ebay_about']	 	 = 'eBay is a multi-billion dollar market place that allows business or private sellers to auction and retail goods online. Available to sellers worldwide.';
-$_['text_amazon_about']	 	 = 'Amazon Marketplace a fixed-price online marketplace allowing sellers to offer new and used items alongside Amazon\'s regular retail service.';
+
+$_['text_on']                = 'Habilitado';
+$_['text_off']               = 'Desabilitado';
+$_['text_writable']          = 'Gravável';
+$_['text_unwritable']        = 'Não Gravável';
+$_['text_missing']           = 'Não encontrado';
+$_['text_forget']            = 'Não se esqueça de apagar o seu diretório de instalação!';
+$_['text_shop']              = 'Vá para a sua Loja Online';
+$_['text_login']             = 'Painel de Administração';
+
+$_['text_project']           = 'OpenCart';
+$_['text_documentation']     = 'Documentação';
+$_['text_support']           = 'Fórum para Suporte';
+
+$_['text_footer']            = 'Copyright © ' . date('y') . ' OpenCart - Todos direitos reservados';
+$_['text_loading']           = 'Carregando Módulos...';
+$_['text_store']             = 'Visite a loja de extensões';
+$_['text_mail_list']         = 'Receba novidades do OpenCart';
+$_['text_mail_list_small']   = 'Fique informado sobre atualizações e eventos OpenCart.';
+
+$_['text_openbay']   		     = 'OpenBay Pro dá comerciantes a capacidade de vincular a sua loja com mercados como o 3o partido eBay e Amazon. Ordens de importação, os itens da lista e lidar com informações de envio direto do OpenCart ...';
+$_['text_maxmind']   		     = 'MaxMind fornece comerciantes a capacidade de identificar transações arriscadas rapidamente, reduzindo o risco de fraudes e minimiza o tempo gasto revendo encomendas, dando uma pontuação de risco para cada um ...';
+
+$_['text_more_info']   		   = 'Mais Informações';
+$_['text_facebook']   		   = 'Curta Nossa Página';
+$_['text_facebook_info']     = 'Diga-nos o quanto você gosta OpenCart!';
+
+$_['text_facebook_link']     = 'Visite nossa página no Facebook';
+$_['text_forum']    	 	     = 'Fórum da Comunidade';
+$_['text_forum_info']    	   = 'Obtenha ajuda de outros usuários do OpenCart';
+$_['text_forum_link']    	   = 'Visite o nosso fórum';
+$_['text_commercial']    	   = 'Suporte Comercial';
+$_['text_commercial_info']   = 'Serviços de desenvolvimento para OpenCart';
+$_['text_commercial_link']   = 'Visite a página';
+
+$_['text_view']   		       = 'Ver Detalhes';
+$_['text_download']   		   = 'Download';
+$_['text_downloads']   		   = 'Downloads';
+$_['text_price']   		 	     = 'Preço';
+$_['text_maxmind_success']   = 'MaxMind serviço fraude foi instalado';
+
+$_['text_maxmind_top']   	   = 'Se você não tem uma chave de licença que puder';
+$_['text_maxmind_link']   	 = 'iIscreva-se aqui';
+$_['text_ebay_about']	 	     = 'eBay é um multi-bilhões de mercado dólar que permite que os vendedores de negócios ou privadas para leiloar e bens de varejo online. Disponível para sellers em todo o mundo.';
+$_['text_amazon_about']	 	   = 'Amazon Marketplace um mercado online de preço fixo permitindo que os vendedores a oferecer itens novos e usados, juntamente com serviço de varejo regular da Amazon.';
 
 // Entry
 $_['entry_db_driver']        = 'DB Driver';
-$_['entry_db_hostname']      = 'Hostname';
-$_['entry_db_username']      = 'Username';
-$_['entry_db_password']      = 'Password';
-$_['entry_db_database']      = 'Database';
-$_['entry_db_prefix']        = 'Prefix';
-$_['entry_username']         = 'Username';
-$_['entry_password']         = 'Password';
+$_['entry_db_hostname']      = 'Host';
+$_['entry_db_username']      = 'Usuário';
+$_['entry_db_password']      = 'Senha';
+$_['entry_db_database']      = 'Banco de Dados';
+$_['entry_db_prefix']        = 'Prefixo';
+$_['entry_username']         = 'Usuário';
+$_['entry_password']         = 'Senha';
 $_['entry_email']            = 'E-Mail';
-$_['entry_licence_key']      = 'License Key';
-$_['entry_risk']      		 = 'Risk score';
-$_['entry_fraud_status']     = 'Fraud Order Status';
+$_['entry_licence_key']      = 'Licença';
+$_['entry_risk']      		   = 'Pontos de Risco';
+$_['entry_fraud_status']     = 'Situação';
 
 // Help
 $_['help_maxmind_risk']      = 'The higher the score the more likely the order is fraudulent. Set a score between 0 - 100.';
 $_['help_maxmind_fraud']     = 'Orders over your set score will be assigned this order status and will not be allowed to reach the complete status automatically.';
 
 // Error
-$_['error_key'] 			 = 'Maxmind licence key required';
-$_['error_score'] 			 = 'A score between 0 and 100 is accepted';
-$_['error_db_hostname'] 	 = 'Hostname required!';
-$_['error_db_username'] 	 = 'Username required!';
-$_['error_db_database']		 = 'Database Name required!';
-$_['error_db_prefix'] 		 = 'DB Prefix can only contain lowercase characters in the a-z range, 0-9 and underscores';
-$_['error_db_connect'] 		 = 'Error: Could not connect to the database please make sure the database server, username and password is correct!';
-$_['error_username'] 		 = 'Username required!';
-$_['error_password'] 		 = 'Password required!';
-$_['error_email'] 			 = 'Invalid E-Mail!';
-$_['error_config'] 			 = 'Error: Could not write to config.php please check you have set the correct permissions on: ';
+$_['error_key'] 			       = 'Licença obrigatória';
+$_['error_score'] 			     = 'É aceito uma pontuação entre 0 e 100';
+$_['error_db_hostname'] 	   = 'Host obrigatório!';
+$_['error_db_username'] 	   = 'Usuário Obrigatório!';
+$_['error_db_database']		   = 'Banco de dados Obrigatório!';
+$_['error_db_prefix'] 		   = 'DB Prefix pode conter apenas caracteres minúsculos no intervalo A-Z, 0-9 e sublinhados';
+$_['error_db_connect'] 		   = 'Erro: Não foi possível conectar ao banco de dados, por favor verifique se o servidor de banco de dados, nome de usuário e senha está correta!';
+$_['error_username'] 		     = 'Usuário Obrigatório!';
+$_['error_password'] 		     = 'Senha Obrigatória!';
+$_['error_email'] 			     = 'E-Mail Inválido!';
+$_['error_config'] 			     = 'Erro: Não foi possível gravar no config.php por favor, verifique se você definir as permissões corretas em:';
 
 // Buttons
-$_['button_continue']        = 'Continue';
-$_['button_back']            = 'Back';
-$_['button_join']            = 'Join here';
+$_['button_continue']        = 'Continuar';
+$_['button_back']            = 'Voltar';
+$_['button_join']            = 'Junte-se aqui';
 $_['button_setup']           = 'Set-up now';
-$_['button_register']        = 'Register';
+$_['button_register']        = 'Registrar';
 $_['button_register_eu']     = 'Register Europe';
 $_['button_register_us']     = 'Register USA';
 

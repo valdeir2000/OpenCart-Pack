@@ -2,11 +2,11 @@
 <div class="container">
   <header>
     <div class="row">
-      <div class="col-sm-6">
-        <h1 class="pull-left">3<small>/4</small></h1>
+      <div class="col-sm-7">
+        <h1 class="pull-left">3<small>/11</small></h1>
         <h3><?php echo $heading_step_3; ?><br><small><?php echo $heading_step_3_small; ?></small></h3>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <div id="logo" class="pull-right hidden-xs">
           <img src="view/image/logo.png" alt="OpenCart" title="OpenCart" />
         </div>
@@ -137,6 +137,13 @@
         <li class="list-group-item"><?php echo $text_license; ?></li>
         <li class="list-group-item"><?php echo $text_installation; ?></li>
         <li class="list-group-item"><b><?php echo $text_configuration; ?></b></li>
+        <li class="list-group-item"><?php echo $text_modules; ?></li>
+        <li class="list-group-item"><?php echo $text_payment_method; ?></li>
+        <li class="list-group-item"><?php echo $text_shipping_method; ?></li>
+        <li class="list-group-item"><?php echo $text_order_total; ?></li>
+        <li class="list-group-item"><?php echo $text_feed; ?></li>
+        <li class="list-group-item"><?php echo $text_modification; ?></li>
+        <li class="list-group-item"><?php echo $text_themes; ?></li>
         <li class="list-group-item"><?php echo $text_finished; ?></li>
       </ul>
     </div>

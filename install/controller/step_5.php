@@ -9,30 +9,61 @@ class ControllerStep5 extends Controller {
 	public function index() {
 
 		$data['extensions'] = array();
+
+		$this->document->setTitle($this->language->get('heading_step_5'));
+
+		$data['heading_step_5'] = $this->language->get('heading_step_5');
+		$data['heading_step_5_small'] = $this->language->get('heading_step_5_small');
 		
 		/* Captura módulos */
 		$files = glob(DIR_OPENCART . 'admin/controller/payment/*.php');
 
+		/* Arquivos não permitidos */
+		$filesNotPermitted = array(
+			'pagseguro_boleto.php',
+			'pagseguro_debito.php',
+			'pagseguro_cartao.php',
+			'moip_boleto.php',
+			'moip_debito.php',
+			'moip_cartao.php',
+		);
+
 		if ($files) {
 			foreach ($files as $file) {
 
-				/* Captura nome do arquivo */
-				$extension = basename($file, '.php');
-				
-				/* Carrega classe de linguagem */
-				$language = new Language('../../admin/language/english/');
+				if (!in_array(basename($file), $filesNotPermitted)) {
+					/* Captura nome do arquivo */
+					$extension = basename($file, '.php');
+					
+					/* Carrega classe de linguagem */
+					$language = new Language('../../admin/language/english/');
 
-				/* Carrega linguagem do módulo */
-				$language->load('payment/' . $extension);
-				
-				/* Salva os módulos disponíveis */
-				$data['extensions'][$extension] = array(
-					'name' => $language->get('heading_title'),
-					'extension' => $extension,
-					'template' => 'payment/' . $extension,
-				);
+					/* Carrega linguagem do módulo */
+					$language->load('payment/' . $extension);
+					
+					/* Salva os módulos disponíveis */
+					$data['extensions'][$extension] = array(
+						'name' => $language->get('heading_title'),
+						'extension' => $extension,
+						'template' => 'payment/' . $extension,
+					);
+				}
 			}
 		}
+
+		/* Text */
+		$data['text_license'] = $this->language->get('text_license');
+		$data['text_installation'] = $this->language->get('text_installation');
+		$data['text_configuration'] = $this->language->get('text_configuration');
+		$data['text_modules'] = $this->language->get('text_modules');
+		$data['text_payment_method'] = $this->language->get('text_payment_method');
+		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+		$data['text_order_total'] = $this->language->get('text_order_total');
+		$data['text_feed'] = $this->language->get('text_feed');
+		$data['text_modification'] = $this->language->get('text_modification');
+		$data['text_themes'] = $this->language->get('text_themes');
+		$data['text_finished'] = $this->language->get('text_finished');
+		$data['text_choose_modules'] = $this->language->get('text_choose_modules');
 
 		/* Butões */
 		$data['button_continue'] = $this->language->get('button_continue');
@@ -71,12 +102,32 @@ class ControllerStep5 extends Controller {
 			}
 		}
 
+		/* Redireciona para o próximo passo */
+		if (empty($this->request->post['modules'])) {
+			$this->response->redirect($this->url->link('step_6'));
+		}
+
 		/* Passo atual */
 		$data['step'] = 5;
 
 		/* Link */
 		$data['action'] = $this->url->link('step_5/install');
-		$data['back'] = $this->url->link('step_4');
+		$data['back'] = $this->url->link('step_5');
+
+		/* Text */
+		$data['text_license'] = $this->language->get('text_license');
+		$data['text_installation'] = $this->language->get('text_installation');
+		$data['text_configuration'] = $this->language->get('text_configuration');
+		$data['text_modules'] = $this->language->get('text_modules');
+		$data['text_payment_method'] = $this->language->get('text_payment_method');
+		$data['text_shipping_method'] = $this->language->get('text_shipping_method');
+		$data['text_order_total'] = $this->language->get('text_order_total');
+		$data['text_feed'] = $this->language->get('text_feed');
+		$data['text_modification'] = $this->language->get('text_modification');
+		$data['text_themes'] = $this->language->get('text_themes');
+		$data['text_finished'] = $this->language->get('text_finished');
+		$data['text_setting_module'] = $this->language->get('text_setting_module');
+		$data['text_config_module'] = $this->language->get('text_config_module');
 
 		/* Botões */
 		$data['button_back'] = $this->language->get('button_back');
