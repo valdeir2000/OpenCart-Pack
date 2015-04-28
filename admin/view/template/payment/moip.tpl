@@ -41,19 +41,20 @@
 			
 			<!-- Body -->
 			<div class="panel-body">
-			
-				<!-- Nav -->
-				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#config"><?php echo $tab_config ?></a></li>
-					<li><a data-toggle="tab" href="#payment-status"><?php echo $tab_status_payment ?></a></li>
-					<li><a data-toggle="tab" href="#area"><?php echo $tab_geo_zone ?></a></li>
-					<li><a data-toggle="tab" href="#plots"><?php echo $tab_plots ?></a></li>
-					<li><a data-toggle="tab" href="#billet"><?php echo $tab_billet ?></a></li>
-					<li><a data-toggle="tab" href="#payment-method"><?php echo $tab_payment_method ?></a></li>
-				</ul>
-				
+
 				<!-- Form -->
 				<form action="<?php echo $action ?>" method="post" enctype="multipart/form-data" id="form-moip" class="form-horizontal">
+
+					<!-- Nav -->
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#config"><?php echo $tab_config ?></a></li>
+						<li><a data-toggle="tab" href="#payment-status"><?php echo $tab_status_payment ?></a></li>
+						<li><a data-toggle="tab" href="#area"><?php echo $tab_geo_zone ?></a></li>
+						<li><a data-toggle="tab" href="#plots"><?php echo $tab_plots ?></a></li>
+						<li><a data-toggle="tab" href="#billet"><?php echo $tab_billet ?></a></li>
+						<li><a data-toggle="tab" href="#payment-method"><?php echo $tab_payment_method ?></a></li>
+					</ul>
+
 					<div class="tab-content">
 						
 						<!-- Tab Config -->
