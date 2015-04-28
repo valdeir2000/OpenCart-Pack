@@ -1,6 +1,8 @@
 <?php
 class ModelSetting extends Model {
 	
+	private $db;
+
 	public function start() {
 		$this->db = new DB(
 			$this->session->data['db']['DB_DRIVER'],
@@ -37,6 +39,14 @@ class ModelSetting extends Model {
 			$data[$type][] = $route;
 
 			$this->db->query("UPDATE " . DB_PREFIX . "user_group SET permission = '" . $this->db->escape(serialize($data)) . "' WHERE user_group_id = '" . (int)$user_group_id . "'");
+		}
+	}
+
+	public function updateTheme($theme = '') {
+		if (!empty($theme)) {
+			$this->start();
+
+			$this->db->query("UPDATE " . DB_PREFIX . "setting SET `value` = '" . $this->db->escape($theme) . "' WHERE `key` = 'config_template'");
 		}
 	}
 }
