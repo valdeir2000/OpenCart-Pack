@@ -423,3 +423,16 @@ div.required .control-label:not(span):before, td.required:before {
 	content: "\f059";
 	margin-left: 4px;
 }
+.overlay {
+	height:180px;
+	width:250px;
+	background:rgba(255, 255, 255, 0.7);
+	position:absolute;
+	cursor: pointer
+}
+.overlay:hover {
+	background: none
+}
+.overlay.active {
+	background: none
+}
