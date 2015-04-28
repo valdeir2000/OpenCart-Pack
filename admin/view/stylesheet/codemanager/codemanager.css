@@ -1,0 +1,253 @@
+.table>tbody>tr>td {
+  vertical-align: middle;
+}
+
+.table tr:first-child td {
+  border-top: none;
+}
+
+.required {
+  color: red;	
+}
+
+.pagination {
+  display: block;
+  padding-left: 0;
+  margin: 0;
+  border-radius: 0px;
+}
+
+#main_settings_sub_tab .input-group {
+  max-width: 137px;
+}
+
+.messageSubject {
+  margin-bottom: 20px;
+}
+
+.list tbody td a {
+  text-decoration: none;
+}
+
+.tab-navigation {
+  position: relative;
+}
+
+.tab-navigation .nav {
+  margin-bottom: 20px;
+}
+
+.tab-buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.registeredDomains {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.licenseAlerts {
+  margin-top: 10px;
+}
+
+/* iModules */
+
+.iModuleContent .box .notActivatedContent {
+  padding: 10px;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  min-height: 300px;
+  overflow: auto;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.iModuleContent .iModuleActivateButton {
+  background: #069;
+  padding: 16px 28px;
+  color: white;
+  border: 4px solid #fff;
+  outline: 4px solid #ccc;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 34px;
+}
+
+.iModuleContent .iModuleActivateButton:hover {
+  background: #06d;
+}
+
+/* ADMIN PANEL STYLES - END */
+
+.colorsLi .colorPreview {
+  width: 18px;
+  height: 18px;
+  background: #ccc;
+  border: 1px solid #aaa;
+}
+
+.colorsLi tr th {
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.colorsLi tr td {
+  text-align: left;
+}
+
+/*Support tab*/
+.panel-body .notLicensedTable, .panel-body .licensedTable {
+  table-layout: fixed;
+}
+
+.panel-body .notLicensedTable .form-group, .panel-body .licensedTable .form-group {
+  margin-bottom: 15px;
+}
+
+.panel-body .notLicensedTable ul, .panel-body .licensedTable ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panel-body .notLicensedTable tr > td {
+  padding: 10px 0;
+}
+
+.panel-body .box-content {
+  padding: 10px;
+  border: 1px solid #DBDBDB;
+  min-height: 300px;
+  overflow: auto;
+}
+
+.notLicensedTable .small-link {
+  font-size: 12px;
+}
+
+.input-group[class*=col-] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.cke * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: content-box;
+}
+
+.notificationMessageTabs {
+  margin: 20px 0;
+}
+
+input[type='text'], input[type='password'] {
+  padding: 6px 12px;
+}
+
+.form-control.customCss {
+  height: 80px;
+  min-height: 80px;
+}
+
+.storeSwitcherWidget {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+}
+
+.storeSwitcherWidget .form-group {
+  margin-bottom: 0;
+}
+
+.storeSwitcherWidget .form-group.open .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+.table-header {
+	background: #EFEFEF;
+}
+a.btn-info {
+	color: #ffffff;
+	text-decoration: none;
+	cursor: pointer;	
+}
+
+a:visited.btn-info {
+	color: #ffffff;
+	text-decoration: none;
+	cursor: pointer;	
+}
+
+.FullScreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+	width: 100% !important;
+	height: 100% !important;	
+}
+
+.NormalScreen {
+	z-index:9999;
+	position:absolute;
+	top:10px;
+	right:20px;
+	display:none;
+	color: #666;
+	cursor: pointer;	
+}
+.BigScreen {
+	z-index:9999;
+	position:fixed;
+	top:8px;
+	right:20px;
+	display:none;
+	color: #666;
+	cursor: pointer;	
+	font-size: 17px;	
+}
+.BackToNormalScreen {
+	z-index:9999;
+	position:fixed;
+	top: 9px;
+	font-size: 14px;
+	right:46px;
+	display:none;
+	color: #666;
+	cursor: pointer;
+}
+.fullscrbtn {
+	position:absolute;
+	font-size: 14px;
+	right:67px;
+	float:right;
+	margin-top:9px;
+	color: #666;
+	cursor: pointer;
+}
+.bigscrbtn {
+	position:absolute;
+	right:40px;
+	float:right;
+	margin-top:8px;
+	color: #666;
+	cursor: pointer;
+	font-size: 17px;	
+}
+.fullscrbtn :hover, .bigscrbtn :hover, .BackToNormalScreen:hover, .BigScreen:hover, .NormalScreen:hover {
+    color: #ffffff;
+}

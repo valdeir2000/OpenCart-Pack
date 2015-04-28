@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Save",
+        "admin": false,
+        "icon": "icon-install",
+        "onclick": "codiad.active.save();"
+    },
+    {
+        "title": "Save All",
+        "admin": false,
+        "icon": "icon-install",
+        "onclick": "codiad.active.saveAll();"
+    },
+    {
+        "title": "Plugins",
+        "admin": false,
+        "icon": null,
+        "onclick": null
+    },
+    {
+        "title": "pluginbar",
+        "admin": false,
+        "icon": null,
+        "onclick": null
+    },
+    {
+        "title": "Administration",
+        "admin": true,
+        "icon": null,
+        "onclick": null
+    },
+    {
+        "title": "Projects",
+        "admin": true,
+        "icon": "icon-archive",
+        "onclick": "codiad.project.list();"
+    },
+    {
+        "title": "Account",
+        "admin": false,
+        "icon": null,
+        "onclick": null
+    },
+    {
+        "title": "Settings",
+        "admin": false,
+        "icon": "icon-doc-text",
+        "onclick": "codiad.modal.load(400, 'components/editor/dialog.php?action=settings');codiad.modal.hideOverlay();"
+    }
+]
