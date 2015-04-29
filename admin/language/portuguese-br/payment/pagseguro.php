@@ -1,25 +1,25 @@
 <?php
 //Heading
-$_['heading_title'] = 'PagSeguro';
+$_['heading_title']              = '<b>PagSeguro Checkout Transparente</b>';
 
 //Text
-$_['text_pagseguro']       = '<img src="view/image/payment/pagseguro.png" />';
-$_['text_success']         = 'Módulo atualizado com sucesso.';
-$_['text_payment']         = 'Formas de Pagamento';
-$_['text_desconto']        = 'Desconto';
-$_['text_acrescimo']       = 'Acréscimo';
-$_['text_boleto']          = 'Boleto';
-$_['text_cartao']          = 'Cartão de Crédito';
-$_['text_debito']          = 'Débito';
-$_['text_custom_field']    = 'Criar campo';
+$_['text_pagseguro']             = '<img src="view/image/payment/pagseguro.png" />';
+$_['text_success']               = 'Módulo atualizado com sucesso.';
+$_['text_payment']               = 'Formas de Pagamento';
+$_['text_desconto']              = 'Desconto';
+$_['text_acrescimo']             = 'Acréscimo';
+$_['text_boleto']                = 'Boleto';
+$_['text_cartao']                = 'Cartão de Crédito';
+$_['text_debito']                = 'Débito';
+$_['text_custom_field']          = 'Criar campo';
 
 //Tab
-$_['tab_config']              = 'Config';
-$_['tab_desconto']            = 'Desc. e Acrés.';
-$_['tab_status_pagamento']    = 'Status de Pagamento';
-$_['tab_geo_zone']            = 'Área Geográfica';
-$_['tab_parcelas']            = 'Parcela';
-$_['tab_methos_de_pagamento'] = 'Métodos de Pagamento';
+$_['tab_config']                 = 'Config';
+$_['tab_desconto']               = 'Desc. e Acrés.';
+$_['tab_status_pagamento']       = 'Status de Pagamento';
+$_['tab_geo_zone']               = 'Área Geográfica';
+$_['tab_parcelas']               = 'Parcela';
+$_['tab_methos_de_pagamento']    = 'Métodos de Pagamento';
 
 //Entry
 $_['entry_status']               = 'Situação:';
@@ -49,21 +49,21 @@ $_['entry_parcelas_sem_juros']   = 'Parcelas sem juros';
 $_['entry_valor_minimo']         = 'Valor mínimo';
 
 //Help
-$_['help_status']               = 'Habilite ou Desabilite o módulo (Essa opção não habilitará/desabilitará os métodos de pagamento)';
-$_['help_email']                = 'E-mail do PagSeguro';
-$_['help_token']                = 'Token de Segurança. Caso não tenha entre em contato com o suporte do PagSeguro';
-$_['help_modo_teste']           = 'É obrigatório que a CONTA TESTE seja qualquer-coisa@SANDBOX.PAGSEGURO.COM.BR';
-$_['help_notificar_cliente']    = 'Notifica o cliente em caso de atualização da situação do pagamento';
-$_['help_numero']               = 'Informe o campo (Custom Field) responsável pelo armazenamento do número da residência.';
-$_['help_exemplo_desconto']     = 'Ex: 18.00 ou 18%';
-$_['help_aguardando_pagamento'] = 'O comprador iniciou a transação, mas até o momento o PagSeguro não recebeu nenhuma informação sobre o pagamento.';
-$_['help_analise']              = 'O comprador optou por pagar com um cartão de crédito e o PagSeguro está analisando o risco da transação.';
-$_['help_pago']                 = 'A transação foi paga pelo comprador e o PagSeguro já recebeu uma confirmação da instituição financeira responsável pelo processamento.';
-$_['help_disponivel']           = 'A transação foi paga e chegou ao final de seu prazo de liberação sem ter sido retornada e sem que haja nenhuma disputa aberta.';
-$_['help_disputa']              = 'O comprador, dentro do prazo de liberação da transação, abriu uma disputa.';
-$_['help_devolvida']            = 'O valor da transação foi devolvido para o comprador.';
-$_['help_cancelada']            = '';
-$_['help_exemplo_parcela']      = 'Máximo: 18';
+$_['help_status']                       = 'Habilite ou Desabilite o módulo (Essa opção não habilitará/desabilitará os métodos de pagamento)';
+$_['help_email']                        = 'E-mail do PagSeguro';
+$_['help_token']                        = 'Token de Segurança. Caso não tenha entre em contato com o suporte do PagSeguro';
+$_['help_modo_teste']                   = 'É obrigatório que a CONTA TESTE seja qualquer-coisa@SANDBOX.PAGSEGURO.COM.BR';
+$_['help_notificar_cliente']            = 'Notifica o cliente em caso de atualização da situação do pagamento';
+$_['help_numero']                       = 'Informe o campo (Custom Field) responsável pelo armazenamento do número da residência.';
+$_['help_exemplo_desconto']             = 'Ex: 18.00 ou 18%';
+$_['help_aguardando_pagamento']         = 'O comprador iniciou a transação, mas até o momento o PagSeguro não recebeu nenhuma informação sobre o pagamento.';
+$_['help_analise']                      = 'O comprador optou por pagar com um cartão de crédito e o PagSeguro está analisando o risco da transação.';
+$_['help_pago']                         = 'A transação foi paga pelo comprador e o PagSeguro já recebeu uma confirmação da instituição financeira responsável pelo processamento.';
+$_['help_disponivel']                   = 'A transação foi paga e chegou ao final de seu prazo de liberação sem ter sido retornada e sem que haja nenhuma disputa aberta.';
+$_['help_disputa']                      = 'O comprador, dentro do prazo de liberação da transação, abriu uma disputa.';
+$_['help_devolvida']                    = 'O valor da transação foi devolvido para o comprador.';
+$_['help_cancelada']                    = '';
+$_['help_exemplo_parcela']              = 'Máximo: 18';
 
 //Error
 $_['warning']                           = 'Você não tem permissão para modificar esse módulo';

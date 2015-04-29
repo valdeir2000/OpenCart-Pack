@@ -1,6 +1,6 @@
 <?php
 //Heading
-$_['heading_title'] 			= 'MoIP';
+$_['heading_title'] 			= '<b>MoIP Checkout Transparente</b>';
 
 //Tab
 $_['tab_config'] 				= 'Config';

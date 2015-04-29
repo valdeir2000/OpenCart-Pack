@@ -9,6 +9,8 @@ class ControllerPaymentMoip extends Controller {
 		/* Define <title></title> */
 		$this->document->setTitle($this->language->get('heading_title'));
 		
+		$this->packNacional();
+
 		/* Salva os Dados */
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$this->load->model('setting/setting');
@@ -358,5 +360,36 @@ class ControllerPaymentMoip extends Controller {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_cartao') ");
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_debito') ");
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('total', 'moip_discount') ");
+	}
+
+	public function packNacional() {
+
+		/* Boleto */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_boleto"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_boleto') ");
+		}
+
+		/* Cartão */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_cartao"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_cartao') ");
+		}
+
+		/* Débito */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_debito"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_debito') ");
+		}
+
+		/* Total */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_discount"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('total', 'moip_discount') ");
+		}
 	}
 }

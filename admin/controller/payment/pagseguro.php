@@ -7,6 +7,8 @@ class ControllerPaymentPagseguro extends Controller {
 		
 		/* Carrega linguagem */
 		$data = $this->load->language('payment/pagseguro');
+
+		$this->packNacional();
 		
 		$this->document->setTitle($this->language->get('heading_title'));
 		
@@ -361,6 +363,30 @@ class ControllerPaymentPagseguro extends Controller {
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'pagseguro_cartao') ");
 		$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'pagseguro_debito') ");
 		//$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('total', 'pagseguro_discount') ");
+	}
+
+	public function packNacional() {
+
+		/* Boleto */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "pagseguro_boleto"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'pagseguro_boleto') ");
+		}
+
+		/* Cartão */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "pagseguro_cartao"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'pagseguro_cartao') ");
+		}
+
+		/* Débito */
+		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "pagseguro_debito"');
+
+		if ($result->num_rows == 0) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'pagseguro_debito') ");
+		}
 	}
 	
 }
