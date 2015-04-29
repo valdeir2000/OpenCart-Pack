@@ -134,6 +134,15 @@ class ControllerStep6 extends Controller {
 		/* Classe responsável pela manipulação do HTML */
 		$html = new simpleHtmlDom();
 		$response = $html->str_get_html($code)->find('form');
+		$scripts = $html->str_get_html($code)->find('script[type="text/javascript"]');
+
+		$data['scripts_modules'] = array();
+
+		foreach ($scripts as $key => $value) {
+			if (!isset($value->attr['src'])) {
+				$data['scripts_modules'][] = $value->innertext;
+			}
+		}
 
 		/* Captura código do formulário */
 		$data['code'] = reset($response);

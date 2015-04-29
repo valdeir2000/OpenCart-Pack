@@ -36,7 +36,7 @@ class ControllerStep5 extends Controller {
 					$extension = basename($file, '.php');
 					
 					/* Carrega classe de linguagem */
-					$language = new Language('../../admin/language/english/');
+					$language = new Language('../../admin/language/portuguese-br/');
 
 					/* Carrega linguagem do módulo */
 					$language->load('payment/' . $extension);

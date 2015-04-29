@@ -74,15 +74,19 @@ class ControllerStep4 extends Controller {
 		/* Salva informações dos módulos */
 		if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->request->server['HTTP_REFERER'] != $this->url->link('step_4')) {
 			
-			/* Model Setting */
-			$this->load->model('setting');
+			/* Redireciona para o próximo passo */
+			if (!empty($this->request->post['config']) && !empty($this->request->post['modules'])) {
+				
+				/* Model Setting */
+				$this->load->model('setting');
 
-			/* Salva configurações */
-			$this->model_setting->editSetting($this->request->post['module_name'], $this->request->post['config']);
-			
-			/* Adiciona Permissões */
-			$this->model_setting->addPermission(1, 'access', 'module/' . $this->request->post['module_name']);
-			$this->model_setting->addPermission(1, 'modify', 'module/' . $this->request->post['module_name']);
+				/* Salva configurações */
+				$this->model_setting->editSetting($this->request->post['module_name'], $this->request->post['config']);
+				
+				/* Adiciona Permissões */
+				$this->model_setting->addPermission(1, 'access', 'module/' . $this->request->post['module_name']);
+				$this->model_setting->addPermission(1, 'modify', 'module/' . $this->request->post['module_name']);
+			}
 
 			/* Redireciona para o próximo passo */
 			if (empty($this->request->post['modules'])) {
@@ -134,6 +138,15 @@ class ControllerStep4 extends Controller {
 		/* Classe responsável pela manipulação do HTML */
 		$html = new simpleHtmlDom();
 		$response = $html->str_get_html($code)->find('form');
+		$scripts = $html->str_get_html($code)->find('script[type="text/javascript"]');
+
+		$data['scripts_modules'] = array();
+
+		foreach ($scripts as $key => $value) {
+			if (!isset($value->attr['src'])) {
+				$data['scripts_modules'][] = $value->innertext;
+			}
+		}
 
 		/* Captura código do formulário */
 		$data['code'] = reset($response);
