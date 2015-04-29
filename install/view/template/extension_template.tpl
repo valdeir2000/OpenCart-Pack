@@ -27,7 +27,7 @@
 		    <div class="buttons">
 	          <div class="pull-left"><a href="<?php echo $back ?>" class="btn btn-default"><?php echo $button_back ?></a></div>
 	          <div class="pull-right">
-	            <input type="submit" value="<?php echo $button_continue ?>" id="submit" class="btn btn-primary" />
+	            <a type="submit" id="submit" class="btn btn-primary"><?php echo $button_continue ?></a>
 	          </div>
 	        </div>
 		  </div>
@@ -65,19 +65,29 @@
 
   		$('form').append(html);
   		
-  		$('form').append('<input type="hidden" name="module_name" value="<?php echo $module_name ?>" />');
+      $('form').append('<input type="hidden" name="module_name" value="<?php echo $module_name ?>" />');
 
   		$('form').attr('action', '<?php echo $action ?>');
-
-      $('form input, form textarea, form select').map(function(i, e){
-        if (typeof($(e).attr("name")) != 'undefined') {
-          if ($(e).attr('name') != 'module_name' && $(e).attr('name') != 'modules[]') {
-            $(e).attr('name', 'config[' + $(e).attr('name') + ']');
-          }
-        }
-      })
   		
   		$('#submit').attr('form', $('form').attr('id'));
+
+      $('#submit').click(function(){
+        $('form input, form textarea, form select').map(function(i, e){
+          if (typeof($(e).attr("name")) != 'undefined') {
+            if ($(e).attr('name') != 'module_name' && $(e).attr('name') != 'modules[]') {
+              $(e).attr('name', 'config[' + $(e).attr('name') + ']');
+            }
+          }
+        })
+
+        $('form').submit();
+      })
   	})
   </script>
+
+  <?php foreach($scripts_modules as $script){
+  echo '<script type="text/javascript">';
+      echo $script;
+  echo '</script>';
+  } ?>
 <?php echo $footer ?>

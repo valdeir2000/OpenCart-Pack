@@ -85,7 +85,7 @@ class ControllerStep5 extends Controller {
 
 		/* Salva informações dos módulos */
 		if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->request->server['HTTP_REFERER'] != $this->url->link('step_5')) {
-			
+
 			/* Model Setting */
 			$this->load->model('setting');
 
@@ -146,6 +146,15 @@ class ControllerStep5 extends Controller {
 		/* Classe responsável pela manipulação do HTML */
 		$html = new simpleHtmlDom();
 		$response = $html->str_get_html($code)->find('form');
+		$scripts = $html->str_get_html($code)->find('script[type="text/javascript"]');
+
+		$data['scripts_modules'] = array();
+
+		foreach ($scripts as $key => $value) {
+			if (!isset($value->attr['src'])) {
+				$data['scripts_modules'][] = $value->innertext;
+			}
+		}
 
 		/* Captura código do formulário */
 		$data['code'] = reset($response);

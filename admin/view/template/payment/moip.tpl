@@ -527,36 +527,35 @@
 	</div>
 </div>
 
-<script type="text/javascript"><!--
-	$(function(){
-	
-		$('#add-plot').click(function(){
+<script type="text/javascript">
+	var count_plot = <?php echo (int)$count_plot; ?>;
+	$('#add-plot').click(function(){
 			
-			var html = '';
-			var count_plot = <?php echo (int)$count_plot; ?>;
-			
-			html += '<tr id="plot' + count_plot + '">';
-			html += '	<td>';
-			html += '		<select name="moip_parcela[' + count_plot + '][de]" class="number-plots form-control">';
-								for(i=2;i<=12;i++) {
-			html += '			<option value="' + i + '">' + i + '</option>';
-								}
-			html += '		</select>';
-			html += '	</td>';
-			html += '	<td>';
-			html += '		<select name="moip_parcela[' + count_plot + '][para]" class="number-plots form-control">';
-								for(i=2;i<=12;i++) {
-			html += '			<option value="' + i + '">' + i + '</option>';
-								}
-			html += '		</select>';
-			html += '	</td>';
-			html += '	<td><input type="text" name="moip_parcela[' + count_plot + '][juros]" value="" class="form-control" /></td>';
-			html += '	<td class="text-right"><button type="button" onClick="$(\'#plot' + count_plot + '\').remove()" class="btn btn-danger"><i class="fa fa-remove"></i></button></td>';
-			html += '</tr>';
-			
-			$('#table-plot tbody').append(html);
-		});
+		var html = '';
+		
+		html += '<tr id="plot' + count_plot + '">';
+		html += '	<td>';
+		html += '		<select name="moip_parcela[' + count_plot + '][de]" class="number-plots form-control">';
+							for(i=2;i<=12;i++) {
+		html += '			<option value="' + i + '">' + i + '</option>';
+							}
+		html += '		</select>';
+		html += '	</td>';
+		html += '	<td>';
+		html += '		<select name="moip_parcela[' + count_plot + '][para]" class="number-plots form-control">';
+							for(i=2;i<=12;i++) {
+		html += '			<option value="' + i + '">' + i + '</option>';
+							}
+		html += '		</select>';
+		html += '	</td>';
+		html += '	<td><input type="text" name="moip_parcela[' + count_plot + '][juros]" value="" class="form-control" /></td>';
+		html += '	<td class="text-right"><button type="button" onClick="$(\'#plot' + count_plot + '\').remove()" class="btn btn-danger"><i class="fa fa-remove"></i></button></td>';
+		html += '</tr>';
+		
+		count_plot++;
+
+		$('#table-plot tbody').append(html);
 	});
-//--></script>
+</script>
 
 <?php echo $footer ?>
