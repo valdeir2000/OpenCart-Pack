@@ -365,28 +365,28 @@ class ControllerPaymentMoip extends Controller {
 	public function packNacional() {
 
 		/* Boleto */
-		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_boleto"');
+		$result = $this->db->query('SELECT * FROM `' . DB_PREFIX . 'extension` WHERE `code` = "moip_boleto"');
 
 		if ($result->num_rows == 0) {
 			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_boleto') ");
 		}
 
 		/* Cartão */
-		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_cartao"');
+		$result = $this->db->query('SELECT * FROM `' . DB_PREFIX . 'extension` WHERE `code` = "moip_cartao"');
 
 		if ($result->num_rows == 0) {
 			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_cartao') ");
 		}
 
 		/* Débito */
-		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_debito"');
+		$result = $this->db->query('SELECT * FROM `' . DB_PREFIX . 'extension` WHERE `code` = "moip_debito"');
 
 		if ($result->num_rows == 0) {
 			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('payment', 'moip_debito') ");
 		}
 
 		/* Total */
-		$result = $this->db->query('SELECT * FROM `" . DB_PREFIX . "extension` WHERE `code` = "moip_discount"');
+		$result = $this->db->query('SELECT * FROM `' . DB_PREFIX . 'extension` WHERE `code` = "moip_discount"');
 
 		if ($result->num_rows == 0) {
 			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('total', 'moip_discount') ");
