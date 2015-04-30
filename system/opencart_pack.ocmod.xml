@@ -294,7 +294,7 @@
       ]]></add>
     </operation>
     <operation>
-      <search><![CDATA[$payment_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));]]></search>
+      <search><![CDATA[$data['payment_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));]]></search>
       <add position="before"><![CDATA[
         foreach ($custom_fields as $custom_field) {
           if (isset($order_info['payment_custom_field'][$custom_field['custom_field_id']])){
@@ -304,7 +304,7 @@
       ]]></add>
     </operation>
     <operation>
-      <search><![CDATA[$shipping_address = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));]]></search>
+      <search><![CDATA[$data['shipping_address'] = str_replace(array("\r\n", "\r", "\n"), '<br />', preg_replace(array("/\s\s+/", "/\r\r+/", "/\n\n+/"), '<br />', trim(str_replace($find, $replace, $format))));]]></search>
       <add position="before"><![CDATA[
         foreach ($custom_fields as $custom_field) {
           if (isset($order_info['shipping_custom_field'][$custom_field['custom_field_id']])){
