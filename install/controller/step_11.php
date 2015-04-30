@@ -57,7 +57,14 @@ class ControllerStep11 extends Controller {
 			$data['success'] = '';
 		}
 
-		//unset($this->session->data['db']);
+		$data['token'] = md5(time());
+
+		$this->session->data['token'] = $data['token'];
+
+		$this->load->model('modification');
+		$this->model_modification->refresh();
+
+		unset($this->session->data['db']);
 
 		$languages = array();
 

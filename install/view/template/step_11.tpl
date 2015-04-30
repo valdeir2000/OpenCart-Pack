@@ -70,7 +70,7 @@
   <div class="visit">
     <div class="row">
       <div class="col-sm-5 col-sm-offset-1 text-center"> <img src="view/image/icon-store.png"> <a class="btn btn-secondary" href="../"><?php echo $text_shop; ?></a> </div>
-      <div class="col-sm-5 text-center"> <img src="view/image/icon-admin.png"> <a class="btn btn-secondary" href="../admin/"><?php echo $text_login; ?></a> </div>
+      <div class="col-sm-5 text-center"> <img src="view/image/icon-admin.png"> <a class="btn btn-secondary" href="../admin/index.php?route=common/dashboard&token=<?php echo $token ?>"><?php echo $text_login; ?></a> </div>
     </div>
   </div>
   <div class="core-modules">

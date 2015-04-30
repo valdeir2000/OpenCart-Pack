@@ -49,4 +49,10 @@ class ModelSetting extends Model {
 			$this->db->query("UPDATE " . DB_PREFIX . "setting SET `value` = '" . $this->db->escape($theme) . "' WHERE `key` = 'config_template'");
 		}
 	}
+
+	public function install($type = '', $code = '') {
+		if (!empty($type) || !empty($code)) {
+			$this->db->query("INSERT INTO `" . DB_PREFIX . "extension` (`type`, `code`) VALUES ('" . $this->db->escape($type) . "', '" . $this->db->escape($code) . "') ");
+		}
+	}
 }

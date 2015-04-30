@@ -79,6 +79,9 @@ class ControllerStep8 extends Controller {
 
 			/* Salva configurações */
 			$this->model_setting->editSetting($this->request->post['module_name'], $this->request->post['config']);
+
+			/* Instala módulo */
+			$this->model_setting->install('feed', $this->request->post['module_name']);
 			
 			/* Adiciona Permissões */
 			$this->model_setting->addPermission(1, 'access', 'feed/' . $this->request->post['module_name']);

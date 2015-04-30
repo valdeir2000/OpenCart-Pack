@@ -83,6 +83,9 @@ class ControllerStep4 extends Controller {
 				/* Salva configurações */
 				$this->model_setting->editSetting($this->request->post['module_name'], $this->request->post['config']);
 				
+				/* Instala módulo */
+				$this->model_setting->install('module', $this->request->post['module_name']);
+				
 				/* Adiciona Permissões */
 				$this->model_setting->addPermission(1, 'access', 'module/' . $this->request->post['module_name']);
 				$this->model_setting->addPermission(1, 'modify', 'module/' . $this->request->post['module_name']);
@@ -96,7 +99,7 @@ class ControllerStep4 extends Controller {
 
 		/* Redireciona para o próximo passo */
 		if (empty($this->request->post['modules'])) {
-			$this->response->redirect($this->url->link('step_6'));
+			$this->response->redirect($this->url->link('step_5'));
 		}
 
 		/* Passo atual */
