@@ -314,4 +314,127 @@
       ]]></add>
     </operation>
   </file>
+  
+  
+  <file path="admin/view/template/common/header.tpl">
+	<operation>
+	  <search><![CDATA[</header>]]></search>
+	  <add position="after"><![CDATA[
+	  <div id="modal-update" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	    <h4 class="modal-title">Atualização Disponível</h4>
+      </div>
+	  
+	  <div class="modal-body">
+	    <table class="table table-hover table-bordered">
+          <thead>
+	        <tr>
+	          <td>Título</td>
+	          <td>Descrição</td>
+	          <td>Data</td>
+	          <td class="text-right">Ação</td>
+	        </tr>
+	      </thead>
+		  
+		  <tbody></tbody>
+        </table>
+	  </div>
+	  
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-remove"></i> Fechar</button>
+	  </div>
+	</div>
+  </div>
+</div>
+	  ]]></add>
+	</operation>
+	
+    <operation>
+	  <search><![CDATA[</head>]]></search>
+	  <add position="before"><![CDATA[<script>
+	<?php if (date('c', strtotime($update_date)) < date('c', time())) { ?>
+	$(function(){
+		$.ajax({
+			url: 'index.php?route=tool/update_pack/verify&token=<?php echo $token ?>',
+			dataType: 'json',
+			success: function(json){				
+				if (json.update) {
+					$.map(json.updates, function(e){
+						var html = '';
+					
+						html += '<tr>';
+						html += '  <td>' + e.title + '</td>';
+						html += '  <td>' + e.description + '</td>';
+						html += '  <td>' + e.date + '</td>';
+						html += '  <td class="text-right">';
+						html += '	<a onClick="update_pack(\'' + e.id + '\', $(this))" class="btn btn-success" data-toggle="tooltip" title="Baixar e Instalar"><i class="fa fa-download"></i></a> ';
+						html += '	<a href="' + e.download + '" target="_blank" role="button" class="btn btn-primary" data-toggle="tooltip" title="Conferir Código"><i class="fa fa-download"></i></a>';
+						html += '  </td>';
+						html += '</tr>';
+						
+						$('#modal-update table tbody').append(html);
+						
+						$('#modal-update').modal('show');
+						
+						$('#modal-update').on('hidden.bs.modal', function(){
+							$.ajax({
+								url: 'index.php?route=tool/update_pack/remember&token=<?php echo $token ?>'
+							});
+						});
+					});
+				}
+			}
+		});
+	});
+	
+	
+	function update_pack(id, element) {
+		$.ajax({
+			url: 'index.php?route=tool/update_pack/install&token=<?php echo $token ?>',
+			type: 'post',
+			data: 'update_id=' + id
+		});
+		
+		var updates = $(element).parent().parent().parent().find('tr');
+		
+		$(element).parent().parent().remove();
+		
+		if(updates.length == 1){
+			$('#modal-update').modal('hide');
+		}
+	}
+	<?php } ?>
+</script>]]></add>
+	</operation>
+  </file>
+  
+  <file path="admin/controller/common/header.php">
+    <operation>
+	  <search><![CDATA[$data['description'] = $this->document->getDescription();]]></search>
+	  <add position="before"><![CDATA[
+	  $data['token'] = $this->session->data['token'];
+	  if (!empty($this->config->get('update_pack_date_last'))) {
+		$data['update_date'] = $this->config->get('update_pack_date_last');
+	  } else {
+		$data['update_date'] = date('c', time());
+	  }
+	  ]]></add>
+	</operation>
+  </file>
+  
+  <file path="admin/model/extension/modification.php">
+    <operation>
+	  <search><![CDATA[public function getModificationByCode($code) {]]></search>
+	  <add position="before"><![CDATA[
+		public function deleteModificationByCode($code) {
+			$query = $this->db->query("DELETE FROM " . DB_PREFIX . "modification WHERE code '" . $this->db->escape($code) . "'");
+			
+			return $query->num_rows;
+		}
+	  ]]></add>
+	</operation>
+  </file>
 </modification>
