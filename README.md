@@ -5,6 +5,7 @@ OpenCart-Pack
 * [Instalação](#instala%C3%A7%C3%A3o)
 * [Módulos Instalado](#o-que-tem-nesse-pack)
 * [Vídeo Demonstração](#v%c3%addeo)
+* [Contribua](#contribua)
 
 ### O que é o projeto.
 Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua primeira loja, esse pack contém inúmeras extensões, módulos e modificações para os lojistas brasileiros.
@@ -12,6 +13,7 @@ Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua
 ### O que tem nesse pack
 **Módulos**
 * [Code Manager](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=17423&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
+* [Googel Chrome Extension](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=19105&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
 
 **Formas de Envio**
 * [Correios](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=980&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
@@ -27,9 +29,15 @@ Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua
 * [Hide Menu Permission](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=21940&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
 * [Máscara + Busca Cep + Validação](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=22004&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
 * [Popup Add Product to Cart](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=21989&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
+* [Url Amigáveis Automática](http://www.opencart.com/index.php?route=extension/extension&filter_username=valdeir2000&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
+* [Frete grátis por produto](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=17105&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
 
 **Tradução**
 * [OpenCart Brasil](http://www.github.com/opencartbrasil/traducao)
+
+### Contribua
+Tem algum módulo que gostaria de adicionar/remover do projeto?
+Entre em contato com **valdeir.naval@gmail.com**
 
 ### Instalação
 1. Extraia o arquivo OpenCart.zip no seu computador.
