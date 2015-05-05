@@ -135,7 +135,7 @@ RewriteRule ^([^?]*) index.php?_route_=$1 [L,QSA]
     RewriteCond %{SCRIPT_FILENAME} -d [OR]
     RewriteCond %{SCRIPT_FILENAME} -f
     RewriteRule "(^|/)\." - [F]
-</IfModule>
+</IfModule> 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
