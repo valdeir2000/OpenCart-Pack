@@ -37,6 +37,8 @@ class ControllerToolUpdatePack extends Controller {
 	public function install() {
 		ignore_user_abort(true);
 		
+		$this->log->write('Atualização Iniciada');
+		
 		/* Captura JSON com os update */
 		if (isset($this->session->data['update_pack_json'])) {
 			$json = $this->session->data['update_pack_json'];
@@ -67,7 +69,7 @@ class ControllerToolUpdatePack extends Controller {
 						break;
 						
 					case 'php':
-						$this->php($updates['updates'][$update_id]['sql']);
+						$this->php($updates['updates'][$update_id]['php']);
 						break;
 				}
 			}
@@ -192,6 +194,14 @@ class ControllerToolUpdatePack extends Controller {
 		$file = DIR_APPLICATION . '../' . $data['filename'];
 		
 		copy($data['link'], $file);
+		
+		$content_file = str_replace(array('<#php', '#>'), array('<?php', '?>'), file_get_contents($file));
+		
+		$handle = fopen($file, 'w');
+		
+		fwrite($handle, $content_file);
+		
+		fclose($handle);
 		
 		include $file;
 		

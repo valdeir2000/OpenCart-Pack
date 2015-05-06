@@ -364,8 +364,10 @@
     <operation>
 	  <search><![CDATA[</head>]]></search>
 	  <add position="before"><![CDATA[<script>
+	//<?php echo $update_date ?>
+	//<?php echo date('c', time()) ?>
 	<?php if (date('c', strtotime($update_date)) < date('c', time())) { ?>
-	$(function(){
+	//$(function(){
 		$.ajax({
 			url: 'index.php?route=tool/update_pack/verify&token=<?php echo $token ?>',
 			dataType: 'json',
@@ -397,7 +399,7 @@
 				}
 			}
 		});
-	});
+	//});
 	
 	
 	function update_pack(id, element) {
@@ -425,7 +427,7 @@
 	  <search><![CDATA[$data['description'] = $this->document->getDescription();]]></search>
 	  <add position="before"><![CDATA[
 	  $data['token'] = $this->session->data['token'];
-	  if (!$this->config->get('update_pack_date_last')) {
+	  if ($this->config->get('update_pack_date_last')) {
 		$data['update_date'] = $this->config->get('update_pack_date_last');
 	  } else {
 		$data['update_date'] = date('c', time());
