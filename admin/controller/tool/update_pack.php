@@ -55,19 +55,19 @@ class ControllerToolUpdatePack extends Controller {
 			foreach($updates['updates'][$update_id] as $key => $update) {
 				switch($key) {
 					case 'zip':
-						//$this->zip($updates['updates'][$update_id]['zip']);
+						$this->zip($updates['updates'][$update_id]['zip']);
 						break;
 					
 					case 'xml':
-						//$this->xml($updates['updates'][$update_id]['xml']);
+						$this->xml($updates['updates'][$update_id]['xml']);
 						break;
 						
 					case 'sql':
-						//$this->sql($updates['updates'][$update_id]['sql']);
+						$this->sql($updates['updates'][$update_id]['sql']);
 						break;
 						
 					case 'php':
-						//$this->php($updates['updates'][$update_id]['sql']);
+						$this->php($updates['updates'][$update_id]['sql']);
 						break;
 				}
 			}

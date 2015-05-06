@@ -24,8 +24,6 @@
     </operation>
   </file>
 
-
-
   <file path="admin/controller/sale/customer.php">
   <operation>
       <search>
@@ -37,6 +35,7 @@
       ]]></add>
     </operation>
   </file>
+  
   <file path="admin/controller/sale/order.php">
     <operation>
       <search>
@@ -110,7 +109,17 @@
       ]]></add>
     </operation>
   </file>
-
+	
+  <file path="catalog/controller/account/address.php">
+    <operation>
+	  <search><![CDATA[$format = '{firstname} {lastname}' . "\n" . '{company}' . "\n" . '{address_1}' . "\n" . '{address_2}' . "\n" . '{city} {postcode}' . "\n" . '{zone}' . "\n" . '{country}';]]></search>
+	  <add position="after" offset="1"><![CDATA[
+		foreach ($result['custom_field'] as $key => $custom_field) {
+          $format = str_replace('{custom_field_' . $key . '}', $custom_field, $format);
+        }
+	  ]]></add>
+	</operation>
+  </file>
 
 
   <file path="admin/view/template/sale/customer_form.tpl">
@@ -416,7 +425,7 @@
 	  <search><![CDATA[$data['description'] = $this->document->getDescription();]]></search>
 	  <add position="before"><![CDATA[
 	  $data['token'] = $this->session->data['token'];
-	  if (!empty($this->config->get('update_pack_date_last'))) {
+	  if (!$this->config->get('update_pack_date_last')) {
 		$data['update_date'] = $this->config->get('update_pack_date_last');
 	  } else {
 		$data['update_date'] = date('c', time());
