@@ -31,6 +31,7 @@ Criamos esse pack para facilitar o pessoal que está iniciando a desenvolver sua
 * [Popup Add Product to Cart](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=21989&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
 * [Url Amigáveis Automática](http://www.opencart.com/index.php?route=extension/extension&filter_username=valdeir2000&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
 * [Frete grátis por produto](http://www.opencart.com/index.php?route=extension/extension/info&extension_id=17105&utm_source=valdeirsantana.com.br&utm_medium=referral&utm_campaign=opencart_install)
+* [Editor Modification](https://github.com/opencartbrasil/ocmod-editor)
 
 **Tradução**
 * [OpenCart Brasil](http://www.github.com/opencartbrasil/traducao)
