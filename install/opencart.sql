@@ -1672,9 +1672,9 @@ CREATE TABLE IF NOT EXISTS `oc_length_class_description` (
 --
 
 INSERT INTO `oc_length_class_description` (`length_class_id`, `language_id`, `title`, `unit`) VALUES
-(1, 1, 'Centimeter', 'cm'),
-(2, 1, 'Millimeter', 'mm'),
-(3, 1, 'Inch', 'in');
+(1, 1, 'Centímetro', 'cm'),
+(2, 1, 'Milímetro', 'mm'),
+(3, 1, 'Polegadas', 'in');
 
 -- --------------------------------------------------------
 
@@ -1852,17 +1852,17 @@ CREATE TABLE IF NOT EXISTS `oc_option_description` (
 --
 
 INSERT INTO `oc_option_description` (`option_id`, `language_id`, `name`) VALUES
-(1, 1, 'Radio'),
-(2, 1, 'Checkbox'),
-(4, 1, 'Text'),
-(6, 1, 'Textarea'),
-(8, 1, 'Date'),
-(7, 1, 'File'),
-(5, 1, 'Select'),
-(9, 1, 'Time'),
-(10, 1, 'Date &amp; Time'),
-(12, 1, 'Delivery Date'),
-(11, 1, 'Size');
+(1, 1, 'Caixa de Opção'),
+(2, 1, 'Caixa de Seleção'),
+(4, 1, 'Texto'),
+(6, 1, 'Texto Longo'),
+(8, 1, 'Data'),
+(7, 1, 'Arquivo'),
+(5, 1, 'Menu de Seleção'),
+(9, 1, 'Hora'),
+(10, 1, 'Data e Hora'),
+(12, 1, 'Data de Entrega'),
+(11, 1, 'Tamanho');
 
 -- --------------------------------------------------------
 
@@ -2202,20 +2202,20 @@ CREATE TABLE IF NOT EXISTS `oc_order_status` (
 --
 
 INSERT INTO `oc_order_status` (`order_status_id`, `language_id`, `name`) VALUES
-(2, 1, 'Processing'),
-(3, 1, 'Shipped'),
-(7, 1, 'Canceled'),
-(5, 1, 'Complete'),
-(8, 1, 'Denied'),
-(9, 1, 'Canceled Reversal'),
-(10, 1, 'Failed'),
-(11, 1, 'Refunded'),
-(12, 1, 'Reversed'),
+(2, 1, 'Processando'),
+(3, 1, 'Enviado'),
+(7, 1, 'Cancelado'),
+(5, 1, 'Completo'),
+(8, 1, 'Negado'),
+(9, 1, 'Reserva Cancelada'),
+(10, 1, 'Falha'),
+(11, 1, 'Reembolsado'),
+(12, 1, 'Revertido'),
 (13, 1, 'Chargeback'),
-(1, 1, 'Pending'),
-(16, 1, 'Voided'),
-(15, 1, 'Processed'),
-(14, 1, 'Expired');
+(1, 1, 'Pendente'),
+(16, 1, 'Anulado'),
+(15, 1, 'Processado'),
+(14, 1, 'Expirado');
 
 -- --------------------------------------------------------
 
@@ -2887,9 +2887,9 @@ CREATE TABLE IF NOT EXISTS `oc_return_action` (
 --
 
 INSERT INTO `oc_return_action` (`return_action_id`, `language_id`, `name`) VALUES
-(1, 1, 'Refunded'),
-(2, 1, 'Credit Issued'),
-(3, 1, 'Replacement Sent');
+(1, 1, 'Reembolsado'),
+(2, 1, 'Crédito Emitido'),
+(3, 1, 'Substituição Enviada');
 
 -- --------------------------------------------------------
 
@@ -2925,11 +2925,11 @@ CREATE TABLE IF NOT EXISTS `oc_return_reason` (
 --
 
 INSERT INTO `oc_return_reason` (`return_reason_id`, `language_id`, `name`) VALUES
-(1, 1, 'Dead On Arrival'),
-(2, 1, 'Received Wrong Item'),
-(3, 1, 'Order Error'),
-(4, 1, 'Faulty, please supply details'),
-(5, 1, 'Other, please supply details');
+(1, 1, 'Chegou Quebrado'),
+(2, 1, 'Produto Trocado'),
+(3, 1, 'Erro no Pedido'),
+(4, 1, 'Com defeito. Por favor, fornecer detalhes'),
+(5, 1, 'Outros. Por favor forneça detalhes');
 
 -- --------------------------------------------------------
 
@@ -2949,9 +2949,9 @@ CREATE TABLE IF NOT EXISTS `oc_return_status` (
 --
 
 INSERT INTO `oc_return_status` (`return_status_id`, `language_id`, `name`) VALUES
-(1, 1, 'Pending'),
-(3, 1, 'Complete'),
-(2, 1, 'Awaiting Products');
+(1, 1, 'Pendente'),
+(3, 1, 'Completo'),
+(2, 1, 'Aguardando produtos');
 
 -- --------------------------------------------------------
 
@@ -3159,10 +3159,10 @@ CREATE TABLE IF NOT EXISTS `oc_stock_status` (
 --
 
 INSERT INTO `oc_stock_status` (`stock_status_id`, `language_id`, `name`) VALUES
-(7, 1, 'In Stock'),
-(8, 1, 'Pre-Order'),
-(5, 1, 'Out Of Stock'),
-(6, 1, '2-3 Days');
+(7, 1, 'Em Estoque'),
+(8, 1, 'Pré-Venda'),
+(5, 1, 'Fora de Estoque'),
+(6, 1, '2-3 Dias');
 
 -- --------------------------------------------------------
 
@@ -3569,10 +3569,10 @@ CREATE TABLE IF NOT EXISTS `oc_weight_class_description` (
 --
 
 INSERT INTO `oc_weight_class_description` (`weight_class_id`, `language_id`, `title`, `unit`) VALUES
-(1, 1, 'Kilogram', 'kg'),
-(2, 1, 'Gram', 'g'),
-(5, 1, 'Pound ', 'lb'),
-(6, 1, 'Ounce', 'oz');
+(1, 1, 'Kilo', 'kg'),
+(2, 1, 'Grama', 'g'),
+(5, 1, 'Libra ', 'lb'),
+(6, 1, 'Oz', 'oz');
 
 -- --------------------------------------------------------
 
