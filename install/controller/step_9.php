@@ -70,8 +70,10 @@ class ControllerStep9 extends Controller {
 		if ($this->request->server['REQUEST_METHOD'] == 'POST') {
 			$this->load->model('modification');
 			
-			foreach($this->request->post['modification'] as $key => $modification) {
-				$this->model_modification->activeModification($key);
+			if (is_array($this->request->post['modification'])) {
+				foreach($this->request->post['modification'] as $key => $modification) {
+					$this->model_modification->activeModification($key);
+				}
 			}
 
 			$this->response->redirect($this->url->link('step_10'));

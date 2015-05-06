@@ -1,6 +1,8 @@
 .htaccess
-/config.php
+config.php
+config-dist.php
 admin/config.php
+admin/config-dist.php
 
 !index.html
 
@@ -9,6 +11,6 @@ image/data/
 image/cache/
 system/cache/
 system/logs/
-/system/cache/
-/system/logs/
+system/cache/
+system/logs/
 system/modification/
