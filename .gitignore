@@ -5,6 +5,7 @@ admin/config.php
 admin/config-dist.php
 
 !index.html
+!Changlog
 
 download/
 image/data/
