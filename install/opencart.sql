@@ -3569,7 +3569,7 @@ CREATE TABLE IF NOT EXISTS `oc_weight_class_description` (
 --
 
 INSERT INTO `oc_weight_class_description` (`weight_class_id`, `language_id`, `title`, `unit`) VALUES
-(1, 1, 'Kilo', 'kg'),
+(1, 1, 'Kilograma', 'kg'),
 (2, 1, 'Grama', 'g'),
 (5, 1, 'Libra ', 'lb'),
 (6, 1, 'Oz', 'oz');

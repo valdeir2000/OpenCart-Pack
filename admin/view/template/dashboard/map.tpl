@@ -8,7 +8,7 @@
 </div>
 <link type="text/css" href="view/javascript/jquery/jqvmap/jqvmap.css" rel="stylesheet" media="screen" />
 <script type="text/javascript" src="view/javascript/jquery/jqvmap/jquery.vmap.js"></script> 
-<script type="text/javascript" src="view/javascript/jquery/jqvmap/maps/jquery.vmap.world.js"></script> 
+<script type="text/javascript" src="view/javascript/jquery/jqvmap/maps/jquery.vmap.brazil.js"></script> 
 <script type="text/javascript"><!--
 $(document).ready(function() {
 	$.ajax({
@@ -22,7 +22,7 @@ $(document).ready(function() {
 			}
 					
 			$('#vmap').vectorMap({
-				map: 'world_en',
+				map: 'brazil_br',
 				backgroundColor: '#FFFFFF',
 				borderColor: '#FFFFFF',
 				color: '#9FD5F1',
